@@ -1,0 +1,30 @@
+export const siteConfig = {
+    name: "Ahmad Fadlih Wahyu Sardana",
+    title:
+        "Ahmad Fadlih Wahyu Sardana | Fullstack Developer focused on AI-powered Products",
+    description:
+        "Portfolio of Ahmad Fadlih Wahyu Sardana, a D4 Informatics Engineering student focused on fullstack development, AI integration, automation workflows, and AI-assisted decision systems.",
+    url: "https://ahmad-fadlih-portfolio.vercel.app",
+    ogImage: "/og-image.png",
+    author: "Ahmad Fadlih Wahyu Sardana",
+    username: "afadlih",
+    keywords: [
+        "Ahmad Fadlih",
+        "Ahmad Fadlih Wahyu Sardana",
+        "afadlih",
+        "Fullstack Developer",
+        "AI Application Builder",
+        "AI-powered Products",
+        "AI-assisted Decision System",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Gemini API",
+        "Automation System",
+        "Decision Support System",
+        "Docker",
+        "GitHub Actions",
+        "Portfolio",
+    ],
+};
