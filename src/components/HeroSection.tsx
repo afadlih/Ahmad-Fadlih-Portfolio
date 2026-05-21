@@ -10,7 +10,8 @@ export function HeroSection() {
                         {profile.role}
                     </div>
 
-                    <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-slate-950 md:text-5xl lg:text-6xl">                        {profile.headline}
+                    <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-slate-950 md:text-5xl lg:text-6xl">
+                        {profile.headline}
                     </h1>
 
                     <p className="mt-5 text-lg font-semibold text-blue-600">
@@ -26,13 +27,13 @@ export function HeroSection() {
                             href="#projects"
                             className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
                         >
-                            View My Projects
+                            View Projects
                         </a>
                         <a
-                            href="#devops"
+                            href="#contact"
                             className="rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-800 shadow-sm hover:border-blue-500 hover:text-blue-600"
                         >
-                            See Docker Workflow
+                            Contact Me
                         </a>
                     </div>
                 </div>
@@ -62,10 +63,10 @@ export function HeroSection() {
                                         {profile.secondaryRole}
                                     </p>
                                     <p className="mt-3 text-sm text-slate-500">
-                                        {profile.program}
+                                        {profile.location}
                                     </p>
                                     <p className="mt-1 text-sm text-slate-500">
-                                        Student ID: {profile.studentId}
+                                        {profile.motto}
                                     </p>
                                 </div>
                             </div>
@@ -76,7 +77,7 @@ export function HeroSection() {
                         Next.js
                     </div>
                     <div className="absolute -right-4 bottom-20 rounded-2xl bg-white px-4 py-3 text-sm font-black text-slate-700 shadow-xl">
-                        Docker
+                        FastAPI
                     </div>
                 </div>
             </div>
