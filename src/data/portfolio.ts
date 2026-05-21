@@ -5,22 +5,22 @@ export const profile = {
     username: "afadlih",
     studentId: "2341720069",
     program: "D4 Teknik Informatika",
-    role: "Fullstack Developer focused on AI-powered Products",
-    secondaryRole: "AI Application Builder",
+    role: "Fullstack Developer building AI automation products",
+    secondaryRole: "AI Product Engineering & Automation Systems",
     location: "Indonesia",
     email: "2341720069@student.belajar.id",
     github: "https://github.com/afadlih",
     linkedin: "https://id.linkedin.com/in/ahmad-fadlih-wahyu-sardana-706933283",
     instagram: "https://instagram.com/ach.fadlih",
-    headline: "Building AI-powered systems with product-oriented engineering.",
-    subheadline: "Generate → Evaluate → Compare → Decide → Execute",
+    headline: "Turning AI features into usable product workflows.",
+    subheadline: "Input → Mapping → Validation → Execution → Diagnostics",
     description:
-        "I am a D4 Informatics Engineering student focused on fullstack development, AI integration, and AI-assisted decision systems. I build applications that go beyond simple AI wrappers by designing workflows that can generate outputs, evaluate alternatives, compare results, and support structured decision-making.",
+        "I am a D4 Informatics Engineering student who builds AI-powered web applications, automation tools, and realtime dashboards. My focus is product workflows where AI has a clear role inside a bigger system: analyze input, map fields, generate or decide, validate the result, execute safely, and explain what happened.",
     about:
-        "I build fullstack web applications and AI-assisted workflows with a product-oriented mindset. My focus is not only making an application work, but designing a system that can evaluate inputs, compare alternatives, and support structured decisions.",
+        "I build fullstack web applications and AI-assisted workflows with a product-oriented mindset. I care about systems that remain useful when input is messy, output is uncertain, or users need a clear next action.",
     goal:
         "My goal is to grow into an AI Product Engineer who can build useful, reliable, and real-world technology solutions.",
-    motto: "Build consistently. Ship real systems. Refine continuously.",
+    motto: "Build real systems. Make them useful. Keep improving.",
 };
 
 export const navItems = [
@@ -36,35 +36,35 @@ export const floatingBadges = ["Next.js", "TS", "AI", "Docker"];
 
 export const coreFocus = [
     "Fullstack web development with Next.js, TypeScript, and Tailwind CSS",
-    "AI integration using Gemini API",
-    "AI-assisted decision systems and automation workflows",
-    "Product-oriented engineering for real-world use cases",
+    "AI workflow design using Gemini API and structured output",
+    "Automation systems with validation, fallback, execution, and diagnostics",
+    "Realtime dashboards for IoT and operational monitoring",
 ];
 
 export const focusAreas = [
     "AI-powered product workflows",
-    "Decision systems and automation",
-    "Fullstack web applications",
-    "Application-layer AI integration",
-    "Product engineering with real user scenarios",
-    "Reliable systems with validation, fallback, and error handling",
+    "Google Form automation and rule engines",
+    "Decision systems with scoring and recommendation logic",
+    "Fullstack web applications with clean operator-facing UI",
+    "Realtime IoT dashboards and telemetry monitoring",
+    "Reliable systems with validation, fallback, and actionable error states",
 ];
 
 export const currentFocus = [
-    "Building AI-assisted decision pipelines grounded in real use cases",
-    "Integrating AI into actual product surfaces, not just demos",
-    "Improving system reliability through normalization, fallback, and error handling",
-    "Developing with a product mindset: ship, measure, refine",
+    "Polishing FormAI into a stronger end-to-end automation platform",
+    "Improving frontend orchestration, runtime states, and operator diagnostics",
+    "Building AI workflows with clearer validation, fallback, and result contracts",
+    "Strengthening testing, linting, build checks, and documentation habits",
 ];
 
 export const systemFlow = [
-    "Input",
-    "AI Generation",
-    "Evaluation",
-    "Comparison",
-    "Decision",
-    "Optimization",
-    "Output",
+    "Raw input",
+    "Structured data",
+    "Rules",
+    "AI fallback",
+    "Validation",
+    "Execution",
+    "Diagnostics",
 ];
 
 export const coreSkills = [
@@ -95,6 +95,8 @@ export const skills = [
     "Flutter",
     "Dart",
     "MySQL",
+    "Firebase",
+    "MQTT",
     "Gemini API",
     "Selenium",
     "Git",
@@ -107,60 +109,52 @@ export const skills = [
 
 export const featuredProjects = [
     {
+        title: "FormAI — AI Form Automation Platform",
+        description:
+            "An end-to-end Google Form automation system designed around form analysis, CSV/manual/rules input, AI fallback, quick checks, execution modes, and diagnostics.",
+        keyFeatures: [
+            "Google Form analyzer for questions, required fields, options, and submission structure",
+            "CSV template workflow for bulk respondent input",
+            "Manual override and rule-based answer generation",
+            "Gemini fallback for ambiguous or undefined text answers",
+            "Fast HTTP submit mode and Smart Browser/Selenium mode",
+            "Duplicate guard, validation contract, row-level trace, and actionable diagnosis",
+        ],
+        stack: ["Python", "FastAPI", "Next.js", "TypeScript", "Gemini API", "Selenium"],
+        image: "/projects/formai.svg",
+        github: "#",
+        demo: "#",
+    },
+    {
         title: "AI Content Strategy & Decision System",
         description:
-            "An AI-powered system that generates multiple content strategies, evaluates them with scoring logic, compares the results, and selects the best strategy automatically.",
+            "A decision-first content planning app that generates several strategies, scores them, compares tradeoffs, and recommends the strongest strategy with reasoning.",
         keyFeatures: [
-            "Multi-strategy generation: emotional, educational, and viral",
-            "Scoring system for engagement potential, hook quality, CTA clarity, and content relevance",
-            "Decision engine to compare multiple strategies and select the best output",
-            "Gemini API integration for generation, evaluation, and optimization",
-            "Structured output designed for content planning and campaign use cases",
+            "Generates emotional, educational, and viral strategy variations",
+            "Supports Instagram, TikTok, X/Twitter, and LinkedIn",
+            "Scores engagement potential, hook quality, CTA strength, relevance, and weaknesses",
+            "Selects the best strategy with reasoning instead of raw AI output only",
+            "Produces optimized captions, hashtags, execution guidance, and future content plan",
         ],
-        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Gemini API"],
-        image: "/projects/ai-content-system.png",
+        stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Gemini API"],
+        image: "/projects/ai-content-system.svg",
         github:
             "https://github.com/afadlih/AI-Content-Strategy---SEO-Assistant--Web-App-",
         demo: "#",
     },
     {
-        title: "FormAI — AI Form Automation System",
-        description:
-            "An AI-assisted automation system for filling Google Forms using a structured decision pipeline: Analyze → Field Mapping → Rule Engine → AI Fallback → Execution.",
-        keyFeatures: [
-            "Form structure detection",
-            "Field mapping system",
-            "Rule engine with dominant, range-based, weighted, and text-based logic",
-            "Gemini API fallback for undefined or ambiguous fields",
-            "Fast execution mode using HTTP request",
-            "Smart execution mode using browser automation",
-            "Designed for decision-based automation, not static autofill",
-        ],
-        stack: [
-            "Python",
-            "FastAPI",
-            "Next.js",
-            "TypeScript",
-            "Gemini API",
-            "Selenium",
-        ],
-        image: "/projects/formai.png",
-        github: "#",
-        demo: "#",
-    },
-    {
         title: "Smart Clothesline IoT System",
         description:
-            "An IoT-based automation system that controls a clothesline based on real-time environmental conditions.",
+            "A realtime IoT operations dashboard for monitoring, controlling, and analyzing an automated clothesline system.",
         keyFeatures: [
-            "Real-time monitoring dashboard",
-            "Sensor data integration",
-            "Environment-based automation logic",
-            "Web interface for monitoring system status",
-            "Decision flow based on changing weather or environmental data",
+            "Realtime dashboard for clothesline state, alerts, and operational summary",
+            "MQTT telemetry, heartbeat tracking, and sensor stream health monitoring",
+            "Automation center for schedules, thresholds, and safety behavior",
+            "Firebase Firestore for schedules, audit data, and application state",
+            "Telegram commands for status checks and remote control",
         ],
-        stack: ["Next.js", "TypeScript", "IoT Sensors"],
-        image: "/projects/iot-dashboard.png",
+        stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase", "MQTT"],
+        image: "/projects/iot-dashboard.svg",
         github: "https://github.com/afadlih/smart-clothesline-iot-system",
         demo: "#",
     },
@@ -233,22 +227,22 @@ export const devopsItems = [
     {
         title: "Dockerized App",
         description:
-            "Next.js application packaged using optimized multi-stage Docker build with Node Alpine.",
+            "Next.js application packaged using an optimized multi-stage Docker build with Node.js 20 Alpine.",
     },
     {
         title: "GitHub Actions",
         description:
-            "Automated workflow runs install, lint, build, Docker build, and Docker Hub publishing.",
+            "CI workflow runs dependency install, ESLint, production build, and Docker image validation.",
     },
     {
         title: "Quality Gate",
         description:
-            "Pull Requests must pass ESLint, production build, and Docker build validation before being merged into main.",
+            "Pull Requests validate lint, Next.js build, and Docker build before changes are merged into main.",
     },
     {
         title: "Docker Hub Image",
         description:
-            "Every successful push to main publishes the latest image to Docker Hub.",
+            "Pushes to main can publish the latest and commit-SHA tagged Docker image when Docker Hub secrets are configured.",
     },
 ];
 
