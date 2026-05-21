@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { featuredProjects } from "@/data/portfolio";
 
 export function FeaturedProjectsSection() {
@@ -24,11 +25,12 @@ export function FeaturedProjectsSection() {
                         className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                     >
                         <div className="aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-100 to-blue-50">
-                            <img
+                            <Image
                                 src={project.image}
                                 alt={`${project.title} preview`}
+                                width={1600}
+                                height={1000}
                                 className="h-full w-full object-cover"
-                                loading="lazy"
                             />
                         </div>
 
