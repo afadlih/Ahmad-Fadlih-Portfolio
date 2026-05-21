@@ -3,8 +3,6 @@ export const profile = {
     shortName: "Ahmad Fadlih",
     initials: "AF",
     username: "afadlih",
-    studentId: "2341720069",
-    program: "D4 Teknik Informatika",
     role: "Fullstack Developer building AI automation products",
     secondaryRole: "AI Product Engineering & Automation Systems",
     location: "Indonesia",
@@ -15,11 +13,11 @@ export const profile = {
     headline: "Turning AI features into usable product workflows.",
     subheadline: "Input → Mapping → Validation → Execution → Diagnostics",
     description:
-        "I am a D4 Informatics Engineering student who builds AI-powered web applications, automation tools, and realtime dashboards. My focus is product workflows where AI has a clear role inside a bigger system: analyze input, map fields, generate or decide, validate the result, execute safely, and explain what happened.",
+        "I build AI-powered web applications, automation tools, and realtime dashboards. My focus is product workflows where AI has a clear role inside a bigger system: analyze input, map fields, generate or decide, validate the result, execute safely, and explain what happened.",
     about:
         "I build fullstack web applications and AI-assisted workflows with a product-oriented mindset. I care about systems that remain useful when input is messy, output is uncertain, or users need a clear next action.",
     goal:
-        "My goal is to grow into an AI Product Engineer who can build useful, reliable, and real-world technology solutions.",
+        "Grow into an AI Product Engineer who can build useful, reliable, and real-world technology solutions.",
     motto: "Build real systems. Make them useful. Keep improving.",
 };
 
@@ -28,11 +26,10 @@ export const navItems = [
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Services", href: "#services" },
-    { label: "DevOps", href: "#devops" },
     { label: "Contact", href: "#contact" },
 ];
 
-export const floatingBadges = ["Next.js", "TS", "AI", "Docker"];
+export const floatingBadges = ["Next.js", "TS", "AI", "FastAPI"];
 
 export const coreFocus = [
     "Fullstack web development with Next.js, TypeScript, and Tailwind CSS",
@@ -76,9 +73,8 @@ export const coreSkills = [
     "Python",
     "FastAPI",
     "Gemini API",
-    "Docker",
-    "GitHub Actions",
-    "CI/CD",
+    "Firebase",
+    "MQTT",
     "MySQL",
 ];
 
@@ -102,9 +98,6 @@ export const skills = [
     "Git",
     "GitHub",
     "Figma",
-    "Docker",
-    "GitHub Actions",
-    "CI/CD",
 ];
 
 export const featuredProjects = [
@@ -223,35 +216,12 @@ export const services = [
     },
 ];
 
-export const devopsItems = [
-    {
-        title: "Dockerized App",
-        description:
-            "Next.js application packaged using an optimized multi-stage Docker build with Node.js 20 Alpine.",
-    },
-    {
-        title: "GitHub Actions",
-        description:
-            "CI workflow runs dependency install, ESLint, production build, and Docker image validation.",
-    },
-    {
-        title: "Quality Gate",
-        description:
-            "Pull Requests validate lint, Next.js build, and Docker build before changes are merged into main.",
-    },
-    {
-        title: "Docker Hub Image",
-        description:
-            "Pushes to main can publish the latest and commit-SHA tagged Docker image when Docker Hub secrets are configured.",
-    },
-];
-
 export const learningItems = [
     {
-        title: "Building with Next.js",
+        title: "Product-minded engineering",
         description:
-            "Improving my ability to structure production-ready frontend applications with reusable components and clean data separation.",
-        tag: "Next.js",
+            "Improving how I turn rough ideas into clear product flows, usable interfaces, and reliable implementation details.",
+        tag: "Product",
     },
     {
         title: "AI Workflow Design",
@@ -260,10 +230,10 @@ export const learningItems = [
         tag: "AI Engineering",
     },
     {
-        title: "Docker & CI/CD",
+        title: "System Reliability",
         description:
-            "Practicing containerization, automated quality checks, and Docker image publishing through GitHub Actions.",
-        tag: "DevOps",
+            "Practicing validation, fallback handling, result contracts, diagnostics, and operator-friendly error states.",
+        tag: "Reliability",
     },
 ];
 
