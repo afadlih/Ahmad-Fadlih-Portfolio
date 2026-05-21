@@ -1,7 +1,6 @@
 import { AboutSection } from "@/components/AboutSection";
 import { ContactCTASection } from "@/components/ContactCTASection";
 import { CoreSkillsSection } from "@/components/CoreSkillsSection";
-import { DevOpsSection } from "@/components/DevOpsSection";
 import { FeaturedProjectsSection } from "@/components/FeaturedProjectsSection";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
@@ -18,7 +17,6 @@ export default function Home() {
       <CoreSkillsSection />
       <FeaturedProjectsSection />
       <ServicesSection />
-      <DevOpsSection />
       <LearningSection />
       <ContactCTASection />
       <Footer />
