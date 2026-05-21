@@ -25,6 +25,7 @@ export const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
     { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
 ];
@@ -152,6 +153,16 @@ export const featuredProjects = [
         demo: "#",
     },
 ];
+
+export const experienceItems: Array<{
+    type: "Organization" | "Certification" | "Event" | "Achievement";
+    title: string;
+    organization: string;
+    period: string;
+    description: string;
+    highlights: string[];
+    link?: string;
+}> = [];
 
 export const collaborativeProjects = [
     {
