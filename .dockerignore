@@ -12,4 +12,6 @@ npm-debug.log
 .env.test.local
 .env.production
 .env.production.local
-.vercelSS
+.vercel
+coverage
+.DS_Store

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { featuredProjects } from "@/data/portfolio";
 
 export function FeaturedProjectsSection() {
@@ -6,14 +7,14 @@ export function FeaturedProjectsSection() {
             <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
                 <div>
                     <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                        Featured Projects
+                        Featured Case Studies
                     </p>
                     <h2 className="mt-3 text-3xl font-black">Things I&apos;ve Built</h2>
                 </div>
 
                 <p className="max-w-xl text-slate-600">
-                    Projects focused on AI application layer, automation, IoT dashboard,
-                    and decision support workflows.
+                    Projects focused on AI workflow apps, automation platforms,
+                    realtime dashboards, and decision-support systems.
                 </p>
             </div>
 
@@ -21,39 +22,63 @@ export function FeaturedProjectsSection() {
                 {featuredProjects.map((project) => (
                     <article
                         key={project.title}
-                        className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl"
+                        className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                     >
-                        <div className="mb-6 h-36 rounded-2xl bg-gradient-to-br from-slate-100 to-blue-50" />
-                        <h3 className="text-xl font-black">{project.title}</h3>
-                        <p className="mt-4 leading-7 text-slate-600">
-                            {project.description}
-                        </p>
-
-                        <div className="mt-5 flex flex-wrap gap-2">
-                            {project.stack.map((item) => (
-                                <span
-                                    key={item}
-                                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"
-                                >
-                                    {item}
-                                </span>
-                            ))}
+                        <div className="aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-100 to-blue-50">
+                            <Image
+                                src={project.image}
+                                alt={`${project.title} preview`}
+                                width={1600}
+                                height={1000}
+                                className="h-full w-full object-cover"
+                            />
                         </div>
 
-                        {project.github !== "#" ? (
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="mt-6 inline-flex text-sm font-bold text-blue-600 hover:text-blue-700"
-                            >
-                                View Repository →
-                            </a>
-                        ) : (
-                            <span className="mt-6 inline-flex text-sm font-bold text-slate-400">
-                                Repository coming soon
-                            </span>
-                        )}
+                        <div className="p-6">
+                            <h3 className="text-xl font-black">{project.title}</h3>
+                            <p className="mt-4 leading-7 text-slate-600">
+                                {project.description}
+                            </p>
+
+                            <div className="mt-5 flex flex-wrap gap-2">
+                                {project.stack.map((item) => (
+                                    <span
+                                        key={item}
+                                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"
+                                    >
+                                        {item}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div className="mt-6 flex flex-wrap items-center gap-4">
+                                {project.github !== "#" ? (
+                                    <a
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex text-sm font-bold text-blue-600 hover:text-blue-700"
+                                    >
+                                        View Repository →
+                                    </a>
+                                ) : (
+                                    <span className="inline-flex text-sm font-bold text-slate-400">
+                                        Private case study
+                                    </span>
+                                )}
+
+                                {project.demo !== "#" ? (
+                                    <a
+                                        href={project.demo}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex text-sm font-bold text-slate-700 hover:text-blue-600"
+                                    >
+                                        Live Demo →
+                                    </a>
+                                ) : null}
+                            </div>
+                        </div>
                     </article>
                 ))}
             </div>

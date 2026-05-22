@@ -9,7 +9,7 @@ export function AboutSection() {
                         <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
                             About Me
                         </p>
-                        <h2 className="mt-3 text-2xl font-black">Student Profile</h2>
+                        <h2 className="mt-3 text-2xl font-black">Product-minded fullstack builder</h2>
                         <p className="mt-4 leading-8 text-slate-600">{profile.about}</p>
                     </div>
 
@@ -19,12 +19,12 @@ export function AboutSection() {
                             <p className="mt-1 text-slate-600">{profile.name}</p>
                         </div>
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                            <p className="font-bold text-slate-950">Student ID</p>
-                            <p className="mt-1 text-slate-600">{profile.studentId}</p>
+                            <p className="font-bold text-slate-950">Focus</p>
+                            <p className="mt-1 text-slate-600">AI workflow apps, automation, and dashboards</p>
                         </div>
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                            <p className="font-bold text-slate-950">Program</p>
-                            <p className="mt-1 text-slate-600">{profile.program}</p>
+                            <p className="font-bold text-slate-950">Location</p>
+                            <p className="mt-1 text-slate-600">{profile.location}</p>
                         </div>
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                             <p className="font-bold text-slate-950">Goal</p>

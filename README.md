@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ahmad Fadlih Portfolio
 
-## Getting Started
+Personal portfolio website for Ahmad Fadlih Wahyu Sardana.
 
-First, run the development server:
+This project presents my work as a fullstack developer focused on AI workflow apps, automation systems, decision tools, and realtime dashboards. The portfolio is intentionally project-first: it shows what I build, why the work matters, and the engineering patterns behind each project.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Focus
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Fullstack web development
+- AI workflow apps
+- Automation systems
+- Decision support tools
+- Realtime dashboards
+- Operator-friendly interfaces
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Featured Projects
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### FormAI
 
-## Learn More
+AI-assisted form automation platform with form analysis, structured input, rules, fallback generation, quick checks, execution modes, and diagnostics.
 
-To learn more about Next.js, take a look at the following resources:
+### AI Content Strategy and Decision System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Content planning tool that generates multiple strategies, scores them, compares tradeoffs, and recommends the strongest direction.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Repository: https://github.com/afadlih/AI-Content-Strategy---SEO-Assistant--Web-App-
 
-## Deploy on Vercel
+### Smart Clothesline IoT System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Realtime IoT dashboard for monitoring, controlling, and analyzing an automated clothesline system.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Repository: https://github.com/afadlih/smart-clothesline-iot-system
+
+## Project Images
+
+Project image placeholders are in public/projects.
+
+Current files:
+
+- formai.svg
+- ai-content-system.svg
+- iot-dashboard.svg
+
+Replace those files with real screenshots when ready. Recommended size: 1600 x 1000 px.
+
+If you change a filename or extension, update the matching image path in src/data/portfolio.ts.
+
+## Development
+
+Install dependencies, run the app, lint, and build using the scripts in package.json.
+
+Main files:
+
+- src/app/page.tsx
+- src/data/portfolio.ts
+- src/lib/site.ts
+- src/components
+- public/projects
+
+## Deployment
+
+The intended production host is Vercel. The production URL is configured in src/lib/site.ts.
+
+## Maintainer
+
+Built and maintained by Ahmad Fadlih Wahyu Sardana.
