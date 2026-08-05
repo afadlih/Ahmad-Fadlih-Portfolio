@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deep Signal Deck</title>
+  <style>
+    :root { --bg:#06111f; --surface:#0c1a2a; --text:#f7f9fc; --muted:#9fb0c3; --border:#20364d; --blue:#5b7cfa; --teal:#22c7b8; --amber:#f2b84b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,Segoe UI,sans-serif; }
+    header { position:sticky; top:0; z-index:50; display:flex; justify-content:space-between; padding:18px 6vw; border-bottom:1px solid var(--border); background:rgba(6,17,31,.88); backdrop-filter:blur(16px); }
+    main { width:min(1120px,88vw); margin:auto; }
+    .hero { min-height:70vh; display:grid; align-content:center; max-width:780px; }
+    h1 { font-size:clamp(44px,7vw,82px); line-height:.98; letter-spacing:-.055em; }
+    .deck { padding:80px 0; }
+    .slot { min-height:72vh; }
+    .card { position:sticky; top:92px; min-height:560px; border:1px solid var(--border); border-radius:24px; background:var(--surface); padding:40px; box-shadow:0 28px 80px -42px rgba(91,124,250,.6); }
+    .slot:nth-child(2) .card { top:106px; box-shadow:0 28px 80px -42px rgba(34,199,184,.6); }
+    .slot:nth-child(3) .card { top:120px; box-shadow:0 28px 80px -42px rgba(167,139,250,.6); }
+    .card h2 { font-size:clamp(36px,5vw,64px); margin:0; }
+    .card p { color:var(--muted); max-width:66ch; line-height:1.7; }
+    .grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:24px; margin-top:28px; }
+    .panel { border:1px solid var(--border); border-radius:18px; padding:18px; }
+    @media (max-width:720px) { .slot { min-height:auto; margin-bottom:18px; } .card { position:relative; top:auto!important; min-height:0; } .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header><strong>AF / Ahmad Fadlih</strong><span>Work · System Map · Resume · Contact</span></header>
+  <main>
+    <section class="hero"><p>FULLSTACK DEVELOPER</p><h1>Clear workflows. Inspectable results.</h1><p>I build operational dashboards, controlled automation, and AI-assisted products.</p></section>
+    <section class="deck">
+      <div class="slot"><article class="card"><small>01 / INTERNLOG AI</small><h2>Daily work becomes a traceable logbook.</h2><div class="grid"><div class="panel">Problem and outcome</div><div class="panel">Core flow and source paths</div></div></article></div>
+      <div class="slot"><article class="card"><small>02 / AQUASENSE</small><h2>Telemetry becomes an operational decision.</h2><div class="grid"><div class="panel">Problem and outcome</div><div class="panel">Core flow and source paths</div></div></article></div>
+      <div class="slot"><article class="card"><small>03 / FORMAI</small><h2>Messy form input becomes controlled execution.</h2><div class="grid"><div class="panel">Problem and outcome</div><div class="panel">Core flow and source paths</div></div></article></div>
+    </section>
+  </main>
+</body>
+</html>

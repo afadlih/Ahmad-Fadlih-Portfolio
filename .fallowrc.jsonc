@@ -1,0 +1,40 @@
+{
+  "production": {
+    "deadCode": false,
+    "health": true,
+    "dupes": false
+  },
+  "rules": {
+    "unused-files": "error",
+    "unused-exports": "warn",
+    "unused-types": "warn",
+    "unused-dependencies": "error",
+    "unused-dev-dependencies": "warn",
+    "unresolved-imports": "error",
+    "unlisted-dependencies": "error",
+    "duplicate-exports": "warn",
+    "circular-dependencies": "error",
+    "re-export-cycle": "warn",
+    "type-only-dependencies": "warn",
+    "test-only-dependencies": "warn",
+    "coverage-gaps": "off",
+    "stale-suppressions": "warn"
+  },
+  "duplicates": {
+    "mode": "mild"
+  },
+  "health": {
+    "maxCyclomatic": 15,
+    "maxCognitive": 12,
+    "maxCrap": 30,
+    "ignore": [
+      "scripts/portfolio.test.mjs",
+      "src/app/opengraph-image.tsx"
+    ],
+    "suggestInlineSuppression": false
+  },
+  "audit": {
+    "gate": "new-only",
+    "cacheMaxAgeDays": 14
+  }
+}

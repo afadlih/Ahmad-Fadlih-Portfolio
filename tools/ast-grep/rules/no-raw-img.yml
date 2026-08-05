@@ -1,0 +1,9 @@
+id: no-raw-img
+language: Tsx
+severity: error
+message: Use next/image for optimized, responsive images.
+files:
+  - src/**/*.tsx
+rule:
+  kind: jsx_self_closing_element
+  regex: '^<img\b'

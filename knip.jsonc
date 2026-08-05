@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "scripts/**/*.mjs"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx}",
+    "scripts/**/*.mjs",
+    "next.config.ts",
+    "eslint.config.mjs",
+    "postcss.config.mjs"
+  ],
+  "includeEntryExports": true,
+  "ignoreExportsUsedInFile": true,
+  "cycles": {
+    "dynamicImports": true
+  },
+  "ignoreIssues": {
+    "src/app/**/{page,layout,route,error,loading,not-found,global-error,global-not-found,manifest,robots,sitemap,opengraph-image}.tsx": ["exports", "types"],
+    "src/app/**/{route,manifest,robots,sitemap}.ts": ["exports", "types"]
+  }
+}

@@ -1,0 +1,9 @@
+id: no-explicit-any-ts
+language: TypeScript
+severity: error
+message: Replace explicit any with a precise type, unknown, or a generic constraint.
+files:
+  - src/**/*.ts
+rule:
+  kind: predefined_type
+  regex: ^any$

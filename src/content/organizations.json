@@ -1,0 +1,168 @@
+[
+  {
+    "id": "hmti-hrd",
+    "published": true,
+    "evidenceStatus": "documented",
+    "name": "HMTI - Himpunan Mahasiswa Teknik Informatika",
+    "role": {
+      "id": "Head of Human Resource Development",
+      "en": "Head of Human Resource Development"
+    },
+    "period": "2024 - 2025",
+    "description": {
+      "id": "Berperan di pengembangan anggota dengan fokus pada program peningkatan kemampuan, koordinasi tim, dan evaluasi kegiatan internal.",
+      "en": "Contributed to member development through skill-building programs, team coordination, and internal activity evaluation."
+    },
+    "achievements": [
+      {
+        "id": "Menyusun program pengembangan hardskill yang lebih dekat dengan kebutuhan industri teknologi.",
+        "en": "Planned hard-skill development programs aligned with technology industry needs."
+      },
+      {
+        "id": "Mengatur koordinasi tim untuk perencanaan, pelaksanaan, dan evaluasi kegiatan.",
+        "en": "Coordinated the team across planning, execution, and evaluation."
+      },
+      {
+        "id": "Menjadi titik penghubung antara kebutuhan anggota dan arah program kerja HRD.",
+        "en": "Acted as the link between member needs and the HRD work plan."
+      }
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Template program kerja dan evaluasi kegiatan",
+          "en": "Work-program template and activity evaluation"
+        },
+        "note": {
+          "id": "Tempat untuk unggahan dokumen internal, rundown, atau laporan singkat.",
+          "en": "Reserved for internal documents, runbooks, or short reports."
+        }
+      },
+      {
+        "title": {
+          "id": "Foto kegiatan dan dokumentasi pelaksanaan",
+          "en": "Activity photos and execution documentation"
+        },
+        "note": {
+          "id": "Slot ini disiapkan untuk bukti visual saat dokumentasi final sudah siap.",
+          "en": "This slot is reserved for final visual documentation."
+        }
+      }
+    ]
+  },
+  {
+    "id": "prastudi-ti-2024",
+    "published": true,
+    "evidenceStatus": "documented",
+    "name": "Prastudi TI 2024",
+    "role": {
+      "id": "Ketua Pelaksana",
+      "en": "Event Lead"
+    },
+    "period": "2024",
+    "description": {
+      "id": "Memimpin jalannya orientasi mahasiswa baru TI, dari penyusunan rencana sampai pengawasan eksekusi di lapangan.",
+      "en": "Led the orientation program for incoming Informatics students, from planning through on-site execution."
+    },
+    "achievements": [
+      {
+        "id": "Mengkoordinasikan pembagian tugas dan alur kerja panitia.",
+        "en": "Coordinated committee roles and operational flow."
+      },
+      {
+        "id": "Menjaga jalannya acara tetap terstruktur dan sesuai timeline.",
+        "en": "Kept the event structured and aligned with the timeline."
+      },
+      {
+        "id": "Membiasakan kerja berbasis checklist, kebutuhan lapangan, dan evaluasi setelah acara.",
+        "en": "Worked through checklists, field needs, and post-event review."
+      }
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Rundown, poster, dan dokumentasi pelaksanaan",
+          "en": "Runbook, poster, and event documentation"
+        },
+        "note": {
+          "id": "Nantinya dapat diisi dengan poster acara, foto panitia, dan hasil evaluasi.",
+          "en": "Can later be filled with event posters, committee photos, and evaluation output."
+        }
+      }
+    ]
+  },
+  {
+    "id": "polinema-mengajar",
+    "published": true,
+    "evidenceStatus": "documented",
+    "name": "Polinema Mengajar",
+    "role": {
+      "id": "Staff External Public Relation",
+      "en": "External Public Relation Staff"
+    },
+    "period": "2024",
+    "description": {
+      "id": "Menangani alur komunikasi eksternal untuk membantu program edukasi masyarakat berjalan lebih tertata.",
+      "en": "Handled external communication flow to support community education programs in a more organized way."
+    },
+    "achievements": [
+      {
+        "id": "Menyusun komunikasi dengan pihak luar dan menjaga kebutuhan koordinasi tetap jelas.",
+        "en": "Structured communication with external parties and kept coordination needs clear."
+      },
+      {
+        "id": "Mendukung publisitas dan hubungan eksternal program secara lebih rapi.",
+        "en": "Supported publicity and external relations in a more organized manner."
+      }
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Poster kegiatan dan dokumentasi komunikasi eksternal",
+          "en": "Activity poster and external communication record"
+        },
+        "note": {
+          "id": "Slot untuk bukti visual dan dokumen pendukung saat sudah dikurasi.",
+          "en": "Reserved for visual proof and supporting documents once curated."
+        }
+      }
+    ]
+  },
+  {
+    "id": "talk2trainz",
+    "published": true,
+    "evidenceStatus": "documented",
+    "name": "Talk2Trainz",
+    "role": {
+      "id": "Co-Founder",
+      "en": "Co-Founder"
+    },
+    "period": "2024 - sekarang",
+    "description": {
+      "id": "Turut membangun platform edukasi teknologi dan AI untuk pemula, termasuk materi digital marketing, penyusunan konten, dan penyampaian kelas.",
+      "en": "Co-built a beginner-focused technology and AI education platform, including digital marketing material, content planning, and teaching sessions."
+    },
+    "achievements": [
+      {
+        "id": "Menjadi pemateri untuk topik digital marketing dan pengenalan AI.",
+        "en": "Served as an instructor for digital marketing and AI introduction topics."
+      },
+      {
+        "id": "Membantu menyusun strategi konten edukatif agar jangkauan platform lebih luas.",
+        "en": "Helped shape educational content strategy to reach a wider audience."
+      }
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Slide materi, poster kelas, dan dokumentasi sesi",
+          "en": "Teaching slides, class posters, and session documentation"
+        },
+        "note": {
+          "id": "Nanti dapat diisi dengan file materi, foto sesi, dan tautan pendaftaran atau landing page.",
+          "en": "Can later include teaching materials, session photos, and registration or landing-page links."
+        }
+      }
+    ]
+  }
+]

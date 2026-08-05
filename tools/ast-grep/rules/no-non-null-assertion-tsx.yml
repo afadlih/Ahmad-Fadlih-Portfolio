@@ -1,0 +1,8 @@
+id: no-non-null-assertion-tsx
+language: Tsx
+severity: warning
+message: Prefer a runtime guard or type refinement over a non-null assertion.
+files:
+  - src/**/*.tsx
+rule:
+  kind: non_null_expression

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "replace-with-experience-id",
+    "published": false,
+    "evidenceStatus": "draft",
+    "title": {
+      "id": "Nama kegiatan atau pengalaman",
+      "en": "Activity or experience name"
+    },
+    "organization": "Nama penyelenggara",
+    "role": {
+      "id": "Peserta atau peran lain",
+      "en": "Participant or another role"
+    },
+    "period": "Bulan YYYY",
+    "description": {
+      "id": "Jelaskan konteks kegiatan dan apa yang dipelajari atau dikerjakan.",
+      "en": "Describe the activity context and what you learned or contributed."
+    },
+    "contributions": [
+      {
+        "id": "Kontribusi atau hasil yang dapat dibuktikan.",
+        "en": "A verifiable contribution or outcome."
+      }
+    ],
+    "photos": [
+      {
+        "src": "/media/experience/nama-kegiatan/foto-01.jpg",
+        "alt": {
+          "id": "Deskripsi visual foto",
+          "en": "Visual description of the photo"
+        },
+        "caption": {
+          "id": "Konteks foto dan kegiatan.",
+          "en": "Photo and activity context."
+        }
+      }
+    ],
+    "tags": [
+      "Tag 1",
+      "Tag 2"
+    ],
+    "link": ""
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "threshold": 4,
+  "reporters": ["console", "json"],
+  "output": ".quality/jscpd",
+  "format": ["typescript", "tsx", "javascript", "css"],
+  "minLines": 8,
+  "minTokens": 60,
+  "mode": "mild",
+  "ignore": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/.quality/**",
+    "**/public/**",
+    "**/career-kit/**",
+    "**/src/content/**",
+    "**/scripts/portfolio.test.mjs"
+  ]
+}

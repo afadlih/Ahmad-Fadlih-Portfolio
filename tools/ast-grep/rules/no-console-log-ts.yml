@@ -1,0 +1,8 @@
+id: no-console-log-ts
+language: TypeScript
+severity: error
+message: Remove console.log from production code. Use explicit error handling or a structured logger.
+files:
+  - src/**/*.ts
+rule:
+  pattern: console.log($$$ARGS)

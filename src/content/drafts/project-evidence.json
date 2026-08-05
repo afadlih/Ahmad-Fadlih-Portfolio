@@ -1,0 +1,27 @@
+[
+  {
+    "projectSlug": "replace-with-project-slug",
+    "evidence": {
+      "id": "replace-with-evidence-id",
+      "type": "screenshot",
+      "status": "planned",
+      "title": {
+        "id": "Judul bukti",
+        "en": "Evidence title"
+      },
+      "description": {
+        "id": "Jelaskan apa yang dibuktikan gambar ini.",
+        "en": "Explain what this image proves."
+      },
+      "safeToPublish": true,
+      "src": "/media/projects/project-slug/screenshot-01.png",
+      "alt": {
+        "id": "Alt text Indonesia",
+        "en": "English alt text"
+      },
+      "featureIds": [
+        "feature-id"
+      ]
+    }
+  }
+]

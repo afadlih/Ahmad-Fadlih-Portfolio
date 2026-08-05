@@ -1,0 +1,116 @@
+[
+  {
+    "id": "talk2trainz-session",
+    "published": true,
+    "evidenceStatus": "documented",
+    "title": {
+      "id": "Sesi edukasi dan materi pemula di Talk2Trainz",
+      "en": "Beginner learning sessions at Talk2Trainz"
+    },
+    "organization": "Talk2Trainz",
+    "role": {
+      "id": "Co-Founder & Pemateri",
+      "en": "Co-Founder & Instructor"
+    },
+    "period": "2024 - sekarang",
+    "description": {
+      "id": "Bagian ini disiapkan untuk menampung dokumentasi pengalaman mengajar, materi, dan suasana sesi bersama peserta.",
+      "en": "This section is prepared to hold teaching documentation, materials, and the atmosphere of each participant session."
+    },
+    "contributions": [
+      {
+        "id": "Membawakan materi digital marketing dan pengenalan AI untuk pemula.",
+        "en": "Delivered beginner-friendly digital marketing and AI introduction sessions."
+      },
+      {
+        "id": "Menyiapkan alur materi, tema konten, dan pendekatan penyampaian agar mudah diikuti.",
+        "en": "Prepared lesson flow, content themes, and a delivery approach that is easy to follow."
+      }
+    ],
+    "photos": [],
+    "tags": [
+      "Teaching",
+      "Digital Marketing",
+      "AI Education"
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Foto sesi kelas",
+          "en": "Session photos"
+        },
+        "note": {
+          "id": "Tambahkan 2 sampai 4 foto terbaik dari sesi atau workshop.",
+          "en": "Add 2 to 4 best photos from the session or workshop."
+        }
+      },
+      {
+        "title": {
+          "id": "Slide atau materi kelas",
+          "en": "Slides or class material"
+        },
+        "note": {
+          "id": "Tempat untuk file presentasi, poster, atau tautan materi.",
+          "en": "Reserved for presentation files, posters, or material links."
+        }
+      }
+    ]
+  },
+  {
+    "id": "leadership-coordination",
+    "published": true,
+    "evidenceStatus": "documented",
+    "title": {
+      "id": "Koordinasi program dan pelaksanaan kegiatan mahasiswa",
+      "en": "Coordinating student programs and events"
+    },
+    "organization": "HMTI & Prastudi TI",
+    "role": {
+      "id": "Koordinator & Ketua Pelaksana",
+      "en": "Coordinator & Event Lead"
+    },
+    "period": "2024 - 2025",
+    "description": {
+      "id": "Bagian ini menampilkan pengalaman memimpin alur kegiatan, mengatur koordinasi, dan memastikan eksekusi tetap berjalan rapi di lapangan.",
+      "en": "This section highlights experience in leading activity flow, coordinating teams, and keeping execution organized on the ground."
+    },
+    "contributions": [
+      {
+        "id": "Menyusun pembagian tugas, kebutuhan operasional, dan evaluasi pasca acara.",
+        "en": "Planned task division, operational needs, and post-event evaluation."
+      },
+      {
+        "id": "Menjaga komunikasi tim agar keputusan di lapangan bisa diambil lebih cepat.",
+        "en": "Kept team communication clear so on-site decisions could be made faster."
+      }
+    ],
+    "photos": [],
+    "tags": [
+      "Leadership",
+      "Operations",
+      "Event Coordination"
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Dokumentasi panitia dan pelaksanaan",
+          "en": "Committee and event documentation"
+        },
+        "note": {
+          "id": "Unggah foto yang paling representatif setelah kurasi final.",
+          "en": "Upload the most representative photos after final curation."
+        }
+      },
+      {
+        "title": {
+          "id": "Poster, rundown, atau laporan singkat",
+          "en": "Poster, runbook, or short report"
+        },
+        "note": {
+          "id": "Tempat ini dapat dipakai untuk menampilkan artefak non-foto.",
+          "en": "This slot can be used for non-photo artifacts."
+        }
+      }
+    ]
+  }
+]

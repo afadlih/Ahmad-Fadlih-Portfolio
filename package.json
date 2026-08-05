@@ -1,12 +1,48 @@
 {
   "name": "ahmad-fadlih-portfolio",
-  "version": "0.1.0",
+  "version": "36.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "clean": "node scripts/clean.mjs",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "validate:portfolio": "node scripts/validate-portfolio-content.mjs",
+    "validate:structure": "node scripts/validate-site-structure.mjs",
+    "validate:config": "node scripts/validate-project-config.mjs",
+    "validate:links": "node scripts/validate-content-links.mjs",
+    "check:copy": "node scripts/check-portfolio-copy.mjs",
+    "test": "node --test scripts/portfolio.test.mjs",
+    "qa:light": "npm run validate:portfolio && npm run validate:structure && npm run validate:config && npm run validate:theme && npm run validate:polish && npm run validate:links && npm run validate:homepage && npm run validate:system-map-layout && npm run validate:clean-code && npm run validate:featured-layout && npm run validate:source-snippets && npm run validate:responsive && npm run validate:visual-qa && npm run validate:preflight && npm run validate:content-lock && npm run validate:final-release && npm run check:copy && npm test",
+    "verify": "npm run lint && npm run typecheck && npm run qa:light && npm run build",
+    "check": "npm run verify",
+    "check:public-url": "node scripts/check-public-url.mjs",
+    "content:new": "node scripts/create-content-draft.mjs",
+    "content:status": "node scripts/content-status.mjs",
+    "validate:clean-code": "node scripts/validate-clean-code-tooling.mjs",
+    "quality:ast-grep": "npx --yes -p @ast-grep/cli@0.44.1 ast-grep scan --config sgconfig.yml src scripts",
+    "quality:ast-grep:test": "npx --yes -p @ast-grep/cli@0.44.1 ast-grep test --config sgconfig.yml --skip-snapshot-tests",
+    "quality:knip": "npx --yes knip@6.23.0 --config knip.jsonc",
+    "quality:jscpd": "npx --yes jscpd@5.0.12 --config .jscpd.json src scripts",
+    "quality:fallow": "npx --yes fallow@3.8.0",
+    "quality:fallow:dead-code": "npx --yes fallow@3.8.0 dead-code",
+    "quality:fallow:dupes": "npx --yes fallow@3.8.0 dupes",
+    "quality:fallow:health": "npx --yes fallow@3.8.0 health --score",
+    "quality:full": "npm run quality:ast-grep:test && npm run quality:ast-grep && npm run quality:knip && npm run quality:jscpd && npm run quality:fallow",
+    "validate:homepage": "node scripts/validate-homepage.mjs",
+    "validate:system-map-layout": "node scripts/validate-system-map-layout.mjs",
+    "validate:source-snippets": "node scripts/validate-source-snippets.mjs",
+    "validate:theme": "node scripts/validate-ui-system-v36.mjs",
+    "validate:featured-layout": "node scripts/validate-featured-layout.mjs",
+    "validate:responsive": "node scripts/validate-responsive-layout.mjs",
+    "validate:preflight": "node scripts/validate-preflight.mjs",
+    "validate:polish": "node scripts/validate-polish-v36.mjs",
+    "validate:visual-qa": "node scripts/validate-visual-qa-v36.mjs",
+    "validate:content-lock": "node scripts/validate-content-lock-v36.mjs",
+    "validate:final-release": "node scripts/validate-final-release-v36.mjs",
+    "release:candidate": "npm run qa:light && npm run check:public-url"
   },
   "dependencies": {
     "next": "16.2.4",
@@ -22,5 +58,12 @@
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "description": "Bilingual Next.js portfolio final deployment candidate with a calm-blue design system, resilient project details, consistent code scrollers, visual QA guards, content-lock documentation, and release preflight checks.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
+  "packageManager": "npm@10.9.2"
 }

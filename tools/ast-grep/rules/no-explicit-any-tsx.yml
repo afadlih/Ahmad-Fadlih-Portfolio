@@ -1,0 +1,9 @@
+id: no-explicit-any-tsx
+language: Tsx
+severity: error
+message: Replace explicit any with a precise type, unknown, or a generic constraint.
+files:
+  - src/**/*.tsx
+rule:
+  kind: predefined_type
+  regex: ^any$

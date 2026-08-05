@@ -1,0 +1,34 @@
+name: Live Portfolio Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-live-check
+  cancel-in-progress: true
+
+jobs:
+  live-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check public routes
+        run: node scripts/check-public-url.mjs
+        env:
+          PORTFOLIO_PUBLIC_URL: ${{ vars.PORTFOLIO_PUBLIC_URL }}
+          REQUIRE_PUBLIC_URL: "true"

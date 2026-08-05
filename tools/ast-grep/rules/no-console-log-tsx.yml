@@ -1,0 +1,8 @@
+id: no-console-log-tsx
+language: Tsx
+severity: error
+message: Remove console.log from UI code. Keep rendering paths free of debug side effects.
+files:
+  - src/**/*.tsx
+rule:
+  pattern: console.log($$$ARGS)

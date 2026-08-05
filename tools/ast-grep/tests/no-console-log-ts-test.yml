@@ -1,0 +1,5 @@
+id: no-console-log-ts
+valid:
+  - const message = "ready";
+invalid:
+  - console.log("debug");

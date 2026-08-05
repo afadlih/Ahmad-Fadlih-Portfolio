@@ -1,0 +1,5 @@
+id: no-console-log-tsx
+valid:
+  - function Card() { return <div>Ready</div>; }
+invalid:
+  - function Card() { console.log("debug"); return <div>Ready</div>; }

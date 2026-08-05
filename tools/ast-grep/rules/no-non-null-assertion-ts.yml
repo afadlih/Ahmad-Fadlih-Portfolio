@@ -1,0 +1,8 @@
+id: no-non-null-assertion-ts
+language: TypeScript
+severity: warning
+message: Prefer a runtime guard or type refinement over a non-null assertion.
+files:
+  - src/**/*.ts
+rule:
+  kind: non_null_expression

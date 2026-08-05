@@ -1,0 +1,38 @@
+[
+  {
+    "id": "replace-with-organization-id",
+    "published": false,
+    "evidenceStatus": "draft",
+    "name": "Nama organisasi",
+    "role": {
+      "id": "Jabatan atau divisi",
+      "en": "Role or division"
+    },
+    "period": "2025 - 2026",
+    "description": {
+      "id": "Jelaskan tanggung jawab, konteks, dan kontribusi nyata.",
+      "en": "Describe responsibilities, context, and real contributions."
+    },
+    "achievements": [
+      {
+        "id": "Tuliskan hasil yang dapat dibuktikan.",
+        "en": "Write a verifiable outcome."
+      }
+    ],
+    "logo": "/media/organizations/nama-organisasi/logo.png",
+    "photos": [
+      {
+        "src": "/media/organizations/nama-organisasi/kegiatan-01.jpg",
+        "alt": {
+          "id": "Deskripsi foto organisasi",
+          "en": "Organization photo description"
+        },
+        "caption": {
+          "id": "Konteks kegiatan dan kontribusi.",
+          "en": "Activity context and contribution."
+        }
+      }
+    ],
+    "link": ""
+  }
+]

@@ -1,0 +1,8 @@
+id: no-empty-catch-ts
+language: TypeScript
+severity: error
+message: Do not swallow errors. Handle, rethrow, or document the failure explicitly.
+files:
+  - src/**/*.ts
+rule:
+  pattern: try { $$$BODY } catch ($ERROR) {}
