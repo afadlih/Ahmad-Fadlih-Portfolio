@@ -11,9 +11,9 @@ export function Navbar({ language }: { language: Language }) {
   const navigationLabel = language === "id" ? "Navigasi utama" : "Primary navigation";
   const mobileMenuLabel = language === "id" ? "Buka menu" : "Open menu";
   const links = [
+    [language === "id" ? "Pendidikan" : "Education", `${localePath(language)}#education`],
     [labels.nav.projects, `${localePath(language)}#featured`],
-    [labels.nav.approach, `${localePath(language)}#approach`],
-    [language === "id" ? "Peta sistem" : "System map", localePath(language, "/system-map")],
+    [language === "id" ? "Sedang dibangun" : "Currently building", `${localePath(language)}#building`],
     [labels.nav.resume, localePath(language, "/resume")],
   ] as const;
 
@@ -30,7 +30,7 @@ export function Navbar({ language }: { language: Language }) {
           </span>
           <span>
             <strong>{profile.shortName}</strong>
-            <small>Fullstack Developer</small>
+            <small>{language === "id" ? "Full-Stack & AI" : "Full-Stack & AI"}</small>
           </span>
         </Link>
 

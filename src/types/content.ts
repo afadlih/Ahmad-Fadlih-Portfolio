@@ -102,9 +102,14 @@ export type Project = {
   name: string;
   featured: boolean;
   featuredRank: number | null;
-  repository: string;
+  repository: string | null;
   visibility: ProjectVisibility;
   stage: ProjectStage;
+  version: string | null;
+  developmentStatus: LocalizedText;
+  currentPriority: boolean;
+  currentRank: number | null;
+  lastReviewedAt: string;
   caseStudyDepth: CaseStudyDepth;
   contentReview: ContentReviewStatus;
   category: LocalizedText;

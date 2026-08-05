@@ -1,6 +1,6 @@
 {
   "name": "ahmad-fadlih-portfolio",
-  "version": "36.0.0",
+  "version": "36.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -42,12 +42,16 @@
     "validate:visual-qa": "node scripts/validate-visual-qa-v36.mjs",
     "validate:content-lock": "node scripts/validate-content-lock-v36.mjs",
     "validate:final-release": "node scripts/validate-final-release-v36.mjs",
-    "release:candidate": "npm run qa:light && npm run check:public-url"
+    "release:candidate": "npm run verify && npm run validate:release-env && npm run check:public-url:required",
+    "qa:final": "npm run verify",
+    "maintenance:cycle": "npm run verify",
+    "validate:release-env": "node scripts/validate-release-environment.mjs",
+    "check:public-url:required": "node scripts/check-public-url.mjs --required"
   },
   "dependencies": {
-    "next": "16.2.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -55,11 +59,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "description": "Bilingual Next.js portfolio final deployment candidate with a calm-blue design system, resilient project details, consistent code scrollers, visual QA guards, content-lock documentation, and release preflight checks.",
+  "description": "Bilingual Next.js portfolio release candidate with evidence-first case studies, explicit education and experience context, hardened CI, privacy-safe private-project summaries, and deployment preflight checks.",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=22.0.0",

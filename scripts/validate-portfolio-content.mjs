@@ -44,6 +44,15 @@ for (const field of [
 ]) {
   checkLocalized(profile[field], `profile.${field}`);
 }
+const education = profile.educationDetails;
+if (!education?.institution || !education?.location) {
+  errors.push("profile.educationDetails: institution and location are required");
+} else {
+  for (const field of ["program", "department", "status"]) {
+    checkLocalized(education[field], `profile.educationDetails.${field}`);
+  }
+}
+
 for (const field of ["email", "github", "linkedin", "resumeIdUrl", "resumeEnUrl"]) {
   if (!profile[field]) errors.push(`profile.${field}: required`);
 }
@@ -71,7 +80,9 @@ for (const file of [profile.resumeIdUrl, profile.resumeEnUrl, profile.resumeEdit
 const projects = readJson("src/content/projects.json");
 const projectSlugs = new Set();
 const featured = projects.filter((project) => project.featured);
+const currentPriorities = projects.filter((project) => project.currentPriority);
 if (featured.length !== 3) errors.push("Exactly 3 featured projects are required");
+if (currentPriorities.length !== 3) errors.push("Exactly 3 current-priority projects are required");
 
 for (const project of projects) {
   const prefix = `project/${project.slug ?? "unknown"}`;
@@ -80,8 +91,26 @@ for (const project of projects) {
   }
   projectSlugs.add(project.slug);
 
-  if (!project.repository?.startsWith("https://github.com/")) {
-    errors.push(`${prefix}: repository must use a GitHub HTTPS URL`);
+  if (project.visibility === "public") {
+    if (!project.repository?.startsWith("https://github.com/")) {
+      errors.push(`${prefix}: public repository must use a GitHub HTTPS URL`);
+    }
+  } else if (project.repository !== null) {
+    errors.push(`${prefix}: private repository URL must not be published`);
+  }
+
+  if (project.version !== null && (typeof project.version !== "string" || !project.version.trim())) {
+    errors.push(`${prefix}: version must be a non-empty string or null`);
+  }
+  checkLocalized(project.developmentStatus, `${prefix}.developmentStatus`);
+  if (!isIsoDate(project.lastReviewedAt)) {
+    errors.push(`${prefix}: lastReviewedAt must use YYYY-MM-DD`);
+  }
+  if (project.currentPriority && !Number.isInteger(project.currentRank)) {
+    errors.push(`${prefix}: currentPriority projects require an integer currentRank`);
+  }
+  if (!project.currentPriority && project.currentRank !== null) {
+    errors.push(`${prefix}: non-priority projects must use currentRank=null`);
   }
 
   for (const field of ["category", "summary", "problem", "outcome"]) {
@@ -232,14 +261,8 @@ for (const project of projects) {
       if (!isIsoDate(source.verifiedAt)) {
         errors.push(`${sourcePrefix}: verifiedAt must use YYYY-MM-DD`);
       }
-      if (
-        project.visibility === "private" &&
-        source.href &&
-        source.linkAccess !== "owner-only"
-      ) {
-        errors.push(
-          `${sourcePrefix}: private file links must declare linkAccess=owner-only`,
-        );
+      if (project.visibility === "private" && source.href) {
+        errors.push(`${sourcePrefix}: private source URLs must not be published`);
       }
       if (
         project.visibility === "public" &&
@@ -263,6 +286,13 @@ for (const project of projects) {
     evidenceIds.add(item.id);
     checkLocalized(item.title, `${evidencePrefix}.title`);
     checkLocalized(item.description, `${evidencePrefix}.description`);
+    if (
+      project.visibility === "private" &&
+      item.type === "repository" &&
+      (item.href || item.safeToPublish)
+    ) {
+      errors.push(`${evidencePrefix}: private repository evidence must stay non-public and URL-free`);
+    }
     if (
       ["ready", "verified"].includes(item.status) &&
       item.safeToPublish &&
@@ -442,6 +472,34 @@ function walk(directory) {
   }
 }
 walk(root);
+
+const privateRepositoryUrls = [
+  "https://github.com/afadlih/Internlog-ai",
+  "https://github.com/afadlih/AquaSense",
+  "https://github.com/afadlih/AI-Form-Automation-System",
+  "https://github.com/afadlih/Polinema_Adaptive_TOEIC",
+  "https://github.com/afadlih/OrthoBreath",
+  "https://github.com/afadlih/skripsiops-ai",
+  "https://github.com/afadlih/AquaSense-Hardware-Simulator",
+];
+function scanPrivateRepositoryUrls(directory) {
+  for (const entry of readdirSync(directory)) {
+    if (ignored.has(entry)) continue;
+    const absolute = join(directory, entry);
+    if (statSync(absolute).isDirectory()) scanPrivateRepositoryUrls(absolute);
+    else if (extensions.has(ext(absolute))) {
+      const rel = relative(root, absolute).replaceAll("\\", "/");
+      if (rel === "scripts/validate-portfolio-content.mjs") continue;
+      const value = readFileSync(absolute, "utf8");
+      for (const privateUrl of privateRepositoryUrls) {
+        if (value.toLowerCase().includes(privateUrl.toLowerCase())) {
+          errors.push(`${rel}: private repository URL must not be published`);
+        }
+      }
+    }
+  }
+}
+scanPrivateRepositoryUrls(root);
 
 const styleFiles = [
   "src/app/globals.css",

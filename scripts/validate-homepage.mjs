@@ -4,7 +4,15 @@ import { join, resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
 const errors = [];
 const home = readFileSync(join(root, "src/app/[lang]/page.tsx"), "utf8");
-const expectedOrder = ["HomeHero", "SelectedWork", "Approach", "PortfolioHub", "Contact"];
+const expectedOrder = [
+  "HomeHero",
+  "EducationExperience",
+  "SelectedWork",
+  "CurrentlyBuilding",
+  "Approach",
+  "PortfolioHub",
+  "Contact",
+];
 
 let previous = -1;
 for (const component of expectedOrder) {
@@ -27,7 +35,9 @@ for (const obsolete of [
 
 for (const file of [
   "src/components/portfolio/HomeHero.tsx",
+  "src/components/portfolio/EducationExperience.tsx",
   "src/components/portfolio/SelectedWork.tsx",
+  "src/components/portfolio/CurrentlyBuilding.tsx",
   "src/components/portfolio/Approach.tsx",
   "src/components/portfolio/PortfolioHub.tsx",
   "src/components/portfolio/SystemMapExperience.tsx",

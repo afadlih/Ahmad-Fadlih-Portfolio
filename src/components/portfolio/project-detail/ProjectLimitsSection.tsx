@@ -13,7 +13,7 @@ export function ProjectLimitsSection({ project, language }: { project: Project; 
         <article><small>{labels.nextSteps}</small><ol>{project.nextImprovements.map((item, index) => <li key={item.id}><span>{String(index + 1).padStart(2, "0")}</span>{localize(item, language)}</li>)}</ol></article>
       </div>
       <div className="repository-note">
-        {project.visibility === "public" ? (
+        {project.visibility === "public" && project.repository ? (
           <a className={buttonClassName()} href={project.repository} target="_blank" rel="noreferrer">{labels.repository} ↗</a>
         ) : <p>{labels.privateRepo}</p>}
       </div>

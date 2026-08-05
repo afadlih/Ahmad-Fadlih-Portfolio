@@ -1,5 +1,99 @@
 [
   {
+    "id": "pt-pindad-internship-2026",
+    "published": true,
+    "evidenceStatus": "documented",
+    "title": {
+      "id": "Magang software dan integrasi sistem",
+      "en": "Software and system-integration internship"
+    },
+    "organization": "PT Pindad (Persero)",
+    "role": {
+      "id": "Software & System Integration Intern",
+      "en": "Software & System Integration Intern"
+    },
+    "period": "2026 - sekarang",
+    "description": {
+      "id": "Mendukung pengembangan software dan integrasi sistem dengan deskripsi publik yang dibatasi oleh kebutuhan kerahasiaan perusahaan.",
+      "en": "Supporting software development and system integration with public details limited by company confidentiality requirements."
+    },
+    "contributions": [
+      {
+        "id": "Menerjemahkan kebutuhan operasional menjadi alur sistem dan dokumentasi teknis.",
+        "en": "Translated operational needs into system flows and technical documentation."
+      },
+      {
+        "id": "Mendukung pengujian, integrasi, dan kesiapan penggunaan tanpa mempublikasikan data internal.",
+        "en": "Supported testing, integration, and operational readiness without publishing internal data."
+      }
+    ],
+    "photos": [],
+    "tags": [
+      "Software Engineering",
+      "System Integration",
+      "NDA-safe"
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Deskripsi publik terbatas",
+          "en": "Limited public description"
+        },
+        "note": {
+          "id": "Detail teknis, gambar, dan data operasional tidak dipublikasikan.",
+          "en": "Technical details, images, and operational data are not published."
+        }
+      }
+    ]
+  },
+  {
+    "id": "pkm-kc-orthobreath-2026",
+    "published": true,
+    "evidenceStatus": "documented",
+    "title": {
+      "id": "Pendanaan PKM-KC 2026 untuk OrthoBreath",
+      "en": "PKM-KC 2026 funding for OrthoBreath"
+    },
+    "organization": "Program Kreativitas Mahasiswa",
+    "role": {
+      "id": "Kontributor full-stack dan integrasi perangkat",
+      "en": "Full-stack and device-integration contributor"
+    },
+    "period": "2026",
+    "description": {
+      "id": "OrthoBreath memperoleh pendanaan PKM-KC 2026 sebagai prototipe health-tech. Klaim publik dibatasi pada status pendanaan dan ruang lingkup prototipe, bukan akurasi atau kesiapan klinis.",
+      "en": "OrthoBreath received PKM-KC 2026 funding as a health-tech prototype. Public claims are limited to funding status and prototype scope, not accuracy or clinical readiness."
+    },
+    "contributions": [
+      {
+        "id": "Mengembangkan alur aplikasi, data, dan integrasi perangkat prototipe.",
+        "en": "Developed application, data, and prototype device-integration flows."
+      },
+      {
+        "id": "Menjaga dokumentasi, pengujian, dan batas klaim prototipe tetap jelas.",
+        "en": "Kept documentation, testing, and prototype claim boundaries explicit."
+      }
+    ],
+    "photos": [],
+    "tags": [
+      "PKM-KC 2026",
+      "Health-tech",
+      "Prototype"
+    ],
+    "proofPoints": [
+      {
+        "title": {
+          "id": "Status pendanaan",
+          "en": "Funding status"
+        },
+        "note": {
+          "id": "Pendanaan PKM-KC 2026; tidak menyatakan PIMNAS atau validasi klinis.",
+          "en": "PKM-KC 2026 funding; no PIMNAS or clinical-validation claim."
+        }
+      }
+    ]
+  },
+  {
     "id": "talk2trainz-session",
     "published": true,
     "evidenceStatus": "documented",

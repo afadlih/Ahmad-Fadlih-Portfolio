@@ -32,14 +32,23 @@ for (const project of projects.filter((item) => item.featured)) {
       } else if (source.lineStart < 1 || source.lineEnd < source.lineStart) {
         errors.push(`${prefix}: invalid source line range`);
       }
-      if (!source.href?.startsWith("https://github.com/afadlih/")) {
-        errors.push(`${prefix}: href must point to the owner's GitHub repository`);
+      if (project.visibility === "public") {
+        if (!source.href?.startsWith("https://github.com/afadlih/")) {
+          errors.push(`${prefix}: public source href must point to the owner's GitHub repository`);
+        }
+        if (!source.href?.includes("/blob/main/")) {
+          errors.push(`${prefix}: public source href must target a file on the main branch`);
+        }
+        if (source.linkAccess && source.linkAccess !== "public") {
+          errors.push(`${prefix}: public source must not use owner-only access`);
+        }
+      } else {
+        if (source.href) errors.push(`${prefix}: private source href must not be published`);
+        if (source.linkAccess !== "owner-only") {
+          errors.push(`${prefix}: private source must declare owner-only access`);
+        }
       }
-      if (!source.href?.includes("/blob/main/")) errors.push(`${prefix}: href must target a file on the main branch`);
       if (!source.verifiedAt) errors.push(`${prefix}: verifiedAt is required`);
-      if (project.visibility === "private" && source.linkAccess !== "owner-only") {
-        errors.push(`${prefix}: private link must declare owner-only access`);
-      }
     }
   }
 }

@@ -1,5 +1,27 @@
 # Changelog
 
+## 36.1.0 - 2026-08-05
+
+### Fixed
+
+- Restored the zero-warning CI path by removing the unused `localize` import and the lint-conflicting `module` variable.
+- Reworked source-snippet validation so private project excerpts remain non-clickable and owner-only.
+- Replaced the broken maintenance workflow contract with valid package scripts and focused workflows.
+
+### Changed
+
+- Consolidated GitHub Actions into `quality.yml` and `production-check.yml`, with full-SHA action pinning.
+- Updated the runtime baseline to Next.js 16.2.12 and React 19.2.8.
+- Added explicit Politeknik Negeri Malang education, PT Pindad internship context, PKM-KC 2026 recognition, and three current engineering priorities.
+- Added SkripsiOps AI and AquaSense Hardware Simulator to the project library.
+- Changed the release wording from premature final-deployment claims to an evidence-based release candidate status.
+
+### Security and privacy
+
+- Removed public repository and source links for private projects.
+- Added strict production-origin validation and scheduled public-route checks.
+- Grouped safe dependency updates while excluding major tooling migrations from unattended updates.
+
 
 ## V36 Final Deployment Candidate
 

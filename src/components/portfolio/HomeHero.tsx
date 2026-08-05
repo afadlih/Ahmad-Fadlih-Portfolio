@@ -9,7 +9,7 @@ import { buttonClassName } from "@/components/ui/button";
 function heroCopy(language: Language) {
   return language === "id"
     ? {
-        eyebrow: "Fullstack Developer · Web, AI, IoT, dan QA",
+        eyebrow: "Mahasiswa D4 Teknik Informatika · Full-Stack, AI, dan IoT",
         resume: "Lihat CV",
         systemMap: "Peta sistem",
         current: "Sedang dikerjakan",
@@ -17,7 +17,7 @@ function heroCopy(language: Language) {
         focusLabel: "Fokus kemampuan",
       }
     : {
-        eyebrow: "Fullstack Developer · Web, AI, IoT, and QA",
+        eyebrow: "D-IV Informatics Engineering Student · Full-Stack, AI, and IoT",
         resume: "View resume",
         systemMap: "System map",
         current: "Currently building",

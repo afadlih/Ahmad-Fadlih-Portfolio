@@ -1,17 +1,19 @@
 # V36 Content Lock
 
-This document records what is safe to publish and what still needs owner confirmation.
+Dokumen ini mencatat informasi yang aman dipublikasikan dan informasi yang masih membutuhkan konfirmasi pemilik.
 
 ## Safe public framing
 
 ```text
 internlog-ai: personal internship productivity and official document workflow
-aquasense: on-premise IoT monitoring and operational dashboard project
-formai: inspectable Google Form automation workflow
-polinema-adaptive-toeic: adaptive learning and pilot readiness platform
+aquasense: on-premise IoT monitoring, edge integration, and operational dashboard
+formai: inspectable form automation workflow with validation and fallback
+polinema-adaptive-toeic: adaptive learning and pilot-readiness platform
 orthobreath: PKM-KC 2026 health-tech prototype
+skripsiops-ai: evidence-first research operations and grounded RAG workspace
+aquasense-hardware-simulator: standalone hardware-like MQTT and edge simulation
 smart-clothesline: realtime IoT dashboard
-content-strategy: content decision system
+content-strategy: public content decision system
 jti-intern-testing: QA and internship system testing
 e2e-magangin: internship system testing
 machine-learning-lab-2025: learning proof
@@ -19,16 +21,29 @@ mobile-programming-lab: learning archive
 technorules: campus discipline information system
 ```
 
-## Items that must remain under owner review
+## Items that remain under owner review
 
 ```text
 exact personal contribution wording for each team project
-exact percentage or metric claims
+exact percentage or outcome claims
 BNSP certificate issue date
-screenshots or demo recordings that are safe to publish
-whether private GitHub links should stay private or be removed from public pages
+screenshots and demo recordings that are safe to publish
 final production domain
 ```
+
+## Private repository boundary
+
+For private projects:
+
+```text
+repository URL is not stored in public content
+source excerpt URL is omitted
+source access is marked owner-only
+branch, SHA, and commit message are not exposed
+only sanitized architecture, version, status, and evidence are shown
+```
+
+A private source excerpt may be rendered as an owner-reviewed snippet, but the filename must not become a clickable repository link.
 
 ## OrthoBreath lock
 
@@ -42,13 +57,13 @@ Firebase Auth and Firestore frontend integration
 FastAPI-ready prediction service, not final clinical prediction
 ```
 
-Do not state that it is a certified medical device, final diagnosis system, or clinically validated model until real validation documents exist.
+Do not state that it is a certified medical device, final diagnosis system, clinically validated model, or PIMNAS achievement unless verified documents are added.
 
 ## Evidence policy
 
 ```text
-Ready or verified evidence can be opened publicly only when safeToPublish is true and a file or URL exists.
-Planned evidence stays as a neutral slot with a capture checklist.
-Private source links must be labeled owner-only.
-Public repo links must use public access status.
+Ready or verified evidence can open publicly only when safeToPublish is true and a file or public URL exists.
+Planned evidence remains a neutral slot with a capture checklist.
+Private source identifiers remain absent from public output.
+Public repository links must use public access status and owner-controlled URLs.
 ```

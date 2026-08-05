@@ -12,16 +12,16 @@
     "en": "Open to internships, junior roles, focused freelance work, and project collaboration."
   },
   "role": {
-    "id": "Fullstack Developer yang mengerjakan workflow, dashboard operasional, otomasi, dan kualitas produk.",
-    "en": "A Fullstack Developer working on workflows, operational dashboards, automation, and product quality."
+    "id": "Mahasiswa D4 Teknik Informatika yang membangun sistem full-stack, workflow AI, dan produk IoT on-premise.",
+    "en": "A D-IV Informatics Engineering student building full-stack systems, AI workflows, and on-premise IoT products."
   },
   "headline": {
-    "id": "Saya membangun aplikasi yang membantu pekerjaan menjadi lebih jelas dan teratur.",
-    "en": "I build applications that make work clearer and more organized."
+    "id": "Saya membangun sistem operasional yang dapat dijalankan, diuji, dan dijelaskan dengan bukti.",
+    "en": "I build operational systems that can be run, tested, and explained with evidence."
   },
   "intro": {
-    "id": "Project saya mencakup logbook magang, otomasi form, dashboard IoT, pembelajaran adaptif, dan pengujian sistem multi-role.",
-    "en": "My projects cover internship logbooks, form automation, IoT dashboards, adaptive learning, and multi-role system testing."
+    "id": "Fokus saya mencakup aplikasi full-stack, workflow AI dengan batas yang jelas, dashboard operasional, integrasi perangkat, dan dokumentasi teknis.",
+    "en": "My focus spans full-stack applications, bounded AI workflows, operational dashboards, device integration, and technical documentation."
   },
   "principle": {
     "id": "Mulai dari masalah yang jelas, bangun alur inti, lalu uji sebelum menambah fitur.",
@@ -47,20 +47,20 @@
   ],
   "photo": "/media/profile/ahmad-fadlih-professional.webp",
   "heroTitle": {
-    "id": "Saya membangun aplikasi web yang membuat proses kerja lebih jelas.",
-    "en": "I build web applications that make complex work easier to understand."
+    "id": "Saya membangun sistem full-stack, workflow AI, dan produk IoT yang siap diuji.",
+    "en": "I build testable full-stack systems, AI workflows, and IoT products."
   },
   "heroSummary": {
-    "id": "Portfolio ini merangkum produk fullstack, otomasi AI, dashboard IoT, dan pengujian sistem. Halaman utama memberi gambaran singkat, sedangkan studi kasus menyimpan keputusan teknis dan bukti implementasi.",
-    "en": "This portfolio covers fullstack products, AI automation, IoT dashboards, and system testing. The homepage gives a concise overview, while each case study holds the technical decisions and implementation evidence."
+    "id": "Mahasiswa D4 Teknik Informatika Politeknik Negeri Malang dengan pengalaman mengembangkan produk operasional, integrasi sistem, dan studi kasus teknis yang menjaga klaim tetap terhubung ke bukti.",
+    "en": "A D-IV Informatics Engineering student at Politeknik Negeri Malang developing operational products, system integrations, and technical case studies that keep claims connected to evidence."
   },
   "education": {
-    "id": "Mahasiswa D4 Teknik Informatika Politeknik Negeri Malang yang sedang membangun portfolio melalui project nyata, dokumentasi, dan evaluasi berkelanjutan.",
-    "en": "An Applied Informatics student at Politeknik Negeri Malang, building a portfolio through real projects, documentation, and steady iteration."
+    "id": "Mahasiswa aktif D4 Teknik Informatika, Jurusan Teknologi Informasi, Politeknik Negeri Malang.",
+    "en": "Current D-IV Informatics Engineering student in the Department of Information Technology at Politeknik Negeri Malang."
   },
   "currentFocus": {
-    "id": "Menyelesaikan produk yang dapat dijalankan, diuji, dan dijelaskan dengan bukti.",
-    "en": "Finishing products that can be run, tested, and explained with evidence."
+    "id": "Release hardening AquaSense, integrasi perangkat, dan workflow penelitian berbasis bukti.",
+    "en": "AquaSense release hardening, device integration, and evidence-first research workflows."
   },
   "resumeUrl": "/documents/Ahmad-Fadlih-CV-ID.pdf",
   "resumeIdUrl": "/documents/Ahmad-Fadlih-CV-ID.pdf",
@@ -71,5 +71,21 @@
   "photoNote": {
     "id": "Potret profesional berbasis foto pemilik. Gunakan hanya untuk portfolio dan CV digital sampai foto studio asli tersedia.",
     "en": "A professional portrait based on the owner photo. Use it for the portfolio and digital resume until an original studio photo is available."
+  },
+  "educationDetails": {
+    "institution": "Politeknik Negeri Malang",
+    "program": {
+      "id": "D4 Teknik Informatika",
+      "en": "D-IV Informatics Engineering"
+    },
+    "department": {
+      "id": "Jurusan Teknologi Informasi",
+      "en": "Department of Information Technology"
+    },
+    "status": {
+      "id": "Mahasiswa aktif",
+      "en": "Current student"
+    },
+    "location": "Malang, Indonesia"
   }
 }

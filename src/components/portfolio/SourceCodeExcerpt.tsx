@@ -28,7 +28,7 @@ export function SourceCodeExcerpt({
       <div className="source-code-excerpt__toolbar">
         <div>
           <span>{excerptLabel}</span>
-          {source.href ? (
+          {visibility === "public" && source.linkAccess === "public" && source.href ? (
             <a
               href={source.href}
               target="_blank"

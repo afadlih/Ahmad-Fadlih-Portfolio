@@ -1,6 +1,6 @@
 ---
 name: Portfolio maintenance
-about: Track a small portfolio maintenance task
+about: Track a focused portfolio maintenance task
 title: "maintenance: "
 labels: maintenance, portfolio
 assignees: afadlih
@@ -8,22 +8,22 @@ assignees: afadlih
 
 ## Task
 
-Describe the maintenance task.
+Describe the maintenance task and expected outcome.
 
 ## Area
 
-- [ ] Copy
-- [ ] Responsive UI
-- [ ] Project proof
-- [ ] Generated data
+- [ ] Copy and content evidence
+- [ ] Responsive UI and accessibility
+- [ ] Project proof and case studies
 - [ ] SEO or metadata
-- [ ] Deployment
+- [ ] Deployment and production checks
 - [ ] Documentation
 
 ## Checklist
 
-- [ ] Update relevant data or UI files
-- [ ] Run `npm run qa:final`
-- [ ] Run `npm run maintenance:cycle`
-- [ ] Confirm no private data is exposed
-- [ ] Attach screenshot or note if visual
+- [ ] Update the relevant data, UI, tests, and documentation
+- [ ] Run `npm ci`
+- [ ] Run `npm run verify`
+- [ ] Run `npm run quality:full` when structural code changed
+- [ ] Confirm no private repository URL, branch, SHA, or secret is exposed
+- [ ] Attach a screenshot or note when the change is visual

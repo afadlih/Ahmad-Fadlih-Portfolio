@@ -20,12 +20,12 @@ export const siteUrl = normalizeSiteUrl(
 
 const homeSeo = {
   id: {
-    title: "Ahmad Fadlih | Fullstack Developer dan Product Builder",
+    title: "Ahmad Fadlih | Full-Stack & AI Engineer",
     description:
       "Portfolio Ahmad Fadlih yang menjelaskan tantangan, alur pengguna, solusi, pengujian, dan bukti teknis dari project fullstack, otomasi, AI, dan IoT.",
   },
   en: {
-    title: "Ahmad Fadlih | Fullstack Developer and Product Builder",
+    title: "Ahmad Fadlih | Full-Stack & AI Engineer",
     description:
       "Ahmad Fadlih's portfolio explaining challenges, user flows, solutions, testing, and technical proof across fullstack, automation, AI, and IoT projects.",
   },
@@ -115,9 +115,13 @@ export function personJsonLd(language: Language) {
     url: absoluteUrl(localePath(language)),
     email: `mailto:${profile.email}`,
     sameAs: [profile.github, profile.linkedin, profile.instagram].filter(Boolean),
-    jobTitle: "Fullstack Developer",
+    jobTitle: "Informatics Engineering Student and Full-Stack & AI Engineer",
+    affiliation: {
+      "@type": "CollegeOrUniversity",
+      name: "Politeknik Negeri Malang",
+    },
     knowsAbout: [
-      "Fullstack development",
+      "Full-stack development",
       "Workflow automation",
       "Operational dashboards",
       "Internet of Things",
@@ -140,7 +144,9 @@ export function projectJsonLd(language: Language, project: Project) {
     name: project.name,
     description: localize(project.summary, language),
     codeRepository:
-      project.visibility === "public" ? project.repository : undefined,
+      project.visibility === "public" && project.repository
+        ? project.repository
+        : undefined,
     programmingLanguage: project.stack,
     inLanguage: language === "id" ? "id-ID" : "en-US",
     author: {

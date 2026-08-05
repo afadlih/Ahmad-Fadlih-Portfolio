@@ -1,6 +1,7 @@
 const rawBase =
   process.env.PORTFOLIO_PUBLIC_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
-const required = process.env.REQUIRE_PUBLIC_URL === "true";
+const required =
+  process.argv.includes("--required") || process.env.REQUIRE_PUBLIC_URL === "true";
 
 if (!rawBase) {
   if (required) {
@@ -31,9 +32,15 @@ const paths = [
   "/id/projects",
   "/en/projects",
   "/id/resume",
+  "/en/resume",
   "/id/projects/internlog-ai",
+  "/en/projects/internlog-ai",
   "/id/projects/aquasense",
+  "/en/projects/aquasense",
   "/id/projects/formai",
+  "/en/projects/formai",
+  "/sitemap.xml",
+  "/robots.txt",
 ];
 
 for (const pathname of paths) {
@@ -44,7 +51,7 @@ for (const pathname of paths) {
     const response = await fetch(url, {
       redirect: "follow",
       signal: controller.signal,
-      headers: { "User-Agent": "portfolio-live-check/7.0" },
+      headers: { "User-Agent": "ahmad-fadlih-portfolio-production-check/36.1" },
     });
     if (!response.ok) {
       console.error(`${url} returned ${response.status}`);

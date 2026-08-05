@@ -5,7 +5,14 @@ import { projects } from "@/lib/content";
 import { Container } from "@/components/portfolio/Container";
 import { SectionHeader } from "@/components/portfolio/SectionHeader";
 
-const productSlugs = ["orthobreath", "smart-clothesline", "content-strategy", "technorules"];
+const productSlugs = [
+  "orthobreath",
+  "skripsiops-ai",
+  "aquasense-hardware-simulator",
+  "smart-clothesline",
+  "content-strategy",
+  "technorules",
+];
 const learningSlugs = [
   "jti-intern-testing",
   "e2e-magangin",
@@ -73,7 +80,7 @@ export function PortfolioHub({ language }: { language: Language }) {
           description:
             "Daftar ini dibuat ringkas agar halaman utama tetap fokus. Setiap project tetap memiliki halaman detail untuk konteks dan teknologi yang digunakan.",
           products: "Produk dan sistem",
-          productsDescription: "Aplikasi kesehatan, IoT, strategi konten, dan sistem internal kampus.",
+          productsDescription: "Health-tech, operasi riset, simulasi IoT, otomasi, dan studi kasus teknis publik.",
           learning: "Testing dan pembelajaran",
           learningDescription: "Pengujian multi-role, machine learning, dan pengembangan aplikasi mobile.",
         }
@@ -83,7 +90,7 @@ export function PortfolioHub({ language }: { language: Language }) {
           description:
             "This list stays compact so the home page remains focused. Each project still has a detail page for its context and technology.",
           products: "Products and systems",
-          productsDescription: "Health, IoT, content strategy, and internal campus systems.",
+          productsDescription: "Health-tech, research operations, IoT simulation, automation, and public technical case studies.",
           learning: "Testing and learning",
           learningDescription: "Multi-role testing, machine learning, and mobile application development.",
         };

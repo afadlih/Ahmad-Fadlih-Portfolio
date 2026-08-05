@@ -25,6 +25,8 @@ for (const path of [
   "src/app/.well-known/security.txt/route.ts",
   "src/components/portfolio/DocumentLanguageSync.tsx",
   "src/components/portfolio/ResumePage.tsx",
+  "src/components/portfolio/EducationExperience.tsx",
+  "src/components/portfolio/CurrentlyBuilding.tsx",
   "public/theme-init.js",
   "public/documents/Ahmad-Fadlih-CV-ID.pdf",
   "public/documents/Ahmad-Fadlih-CV-EN.pdf",

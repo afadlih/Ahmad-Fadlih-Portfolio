@@ -99,7 +99,7 @@ test("featured implementation references are concrete and privacy-safe", () => {
         assert.match(point.verifiedAt, /^\d{4}-\d{2}-\d{2}$/);
         if (project.visibility === "private") {
           assert.equal(point.linkAccess, "owner-only");
-          assert.ok(point.href?.startsWith("https://github.com/afadlih/"));
+          assert.equal(point.href, undefined);
         }
       }
     }
@@ -166,7 +166,9 @@ test("home page follows a clear information order", () => {
   const page = source("src/app/[lang]/page.tsx");
   const components = [
     "HomeHero",
+    "EducationExperience",
     "SelectedWork",
+    "CurrentlyBuilding",
     "Approach",
     "PortfolioHub",
     "Contact",
@@ -339,14 +341,20 @@ test("Superdesign handoff is included", () => {
 });
 
 
-test("featured deep dives include real code excerpts and GitHub file links", () => {
+test("featured deep dives include privacy-safe code excerpts and source access metadata", () => {
   for (const project of projects.filter((item) => item.featured)) {
     for (const deepDive of project.deepDives) {
       assert.ok(deepDive.sourcePoints?.length, `${project.slug}/${deepDive.id}`);
       for (const sourcePoint of deepDive.sourcePoints) {
         assert.ok(sourcePoint.code?.split("\n").length >= 4, sourcePoint.path);
         assert.ok(sourcePoint.language, sourcePoint.path);
-        assert.ok(sourcePoint.href?.includes("github.com/afadlih/"), sourcePoint.path);
+        if (project.visibility === "public") {
+          assert.ok(sourcePoint.href?.includes("github.com/afadlih/"), sourcePoint.path);
+          assert.ok(sourcePoint.href?.includes("/blob/main/"), sourcePoint.path);
+        } else {
+          assert.equal(sourcePoint.href, undefined, sourcePoint.path);
+          assert.equal(sourcePoint.linkAccess, "owner-only", sourcePoint.path);
+        }
         assert.ok(Number.isInteger(sourcePoint.lineStart), sourcePoint.path);
         assert.ok(Number.isInteger(sourcePoint.lineEnd), sourcePoint.path);
       }
@@ -363,4 +371,59 @@ test("code excerpt UI keeps filenames clickable and line-numbered", () => {
   assert.ok(excerpt.includes("lineStart + index"));
   assert.ok(navigator.includes("SourceCodeExcerpt"));
   assert.ok(css.includes("source-code-excerpt__viewport"));
+});
+
+test("education identifies Polinema and the D-IV Informatics Engineering program", () => {
+  assert.equal(profile.educationDetails.institution, "Politeknik Negeri Malang");
+  assert.match(profile.educationDetails.program.id, /D4 Teknik Informatika/);
+  assert.match(profile.educationDetails.program.en, /D-IV Informatics Engineering/);
+  assert.ok(localized(profile.educationDetails.department));
+  assert.ok(localized(profile.educationDetails.status));
+});
+
+test("currently building is limited to three ranked engineering priorities", () => {
+  const current = projects
+    .filter((project) => project.currentPriority)
+    .sort((a, b) => a.currentRank - b.currentRank);
+  assert.deepEqual(
+    current.map((project) => project.slug),
+    ["aquasense", "orthobreath", "skripsiops-ai"],
+  );
+  assert.deepEqual(current.map((project) => project.currentRank), [1, 2, 3]);
+  for (const project of current) {
+    assert.ok(project.version, project.slug);
+    assert.ok(localized(project.developmentStatus), project.slug);
+  }
+});
+
+test("private project metadata remains URL-free across public source and docs", () => {
+  for (const project of projects.filter((item) => item.visibility === "private")) {
+    assert.equal(project.repository, null, project.slug);
+    for (const deepDive of project.deepDives ?? []) {
+      for (const sourcePoint of deepDive.sourcePoints ?? []) {
+        assert.equal(sourcePoint.href, undefined, `${project.slug}/${sourcePoint.path}`);
+        assert.equal(sourcePoint.linkAccess, "owner-only", `${project.slug}/${sourcePoint.path}`);
+      }
+    }
+  }
+  const publicIndex = source("docs/PROJECT_SOURCE_CODE_INDEX.md");
+  assert.equal(publicIndex.includes("github.com/afadlih/Internlog-ai"), false);
+  assert.equal(publicIndex.includes("github.com/afadlih/AquaSense"), false);
+  assert.equal(publicIndex.includes("github.com/afadlih/AI-Form-Automation-System"), false);
+});
+
+test("GitHub Actions are focused and pinned to immutable commit SHAs", () => {
+  const quality = source(".github/workflows/quality.yml");
+  const production = source(".github/workflows/production-check.yml");
+  for (const workflow of [quality, production]) {
+    for (const match of workflow.matchAll(/^\s*uses:\s*[^\s@]+@([^\s#]+)/gm)) {
+      assert.match(match[1], /^[0-9a-f]{40}$/);
+    }
+    assert.ok(workflow.includes("permissions:"));
+    assert.ok(workflow.includes("timeout-minutes:"));
+    assert.ok(workflow.includes("concurrency:"));
+  }
+  for (const stale of ["ci.yml", "final-qa.yml", "maintenance-check.yml", "static-analysis.yml"]) {
+    assert.equal(existsSync(join(root, ".github/workflows", stale)), false, stale);
+  }
 });

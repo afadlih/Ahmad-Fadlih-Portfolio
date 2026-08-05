@@ -13,48 +13,75 @@ const requiredFiles = [
   "docs/CONTENT_LOCK_V36.md",
   "docs/DEPLOYMENT_CANDIDATE_V36.md",
   "docs/UI_SYSTEM_V36.md",
+  "docs/RELEASE_HARDENING_V36_1.md",
+  "docs/REPOSITORY_SETTINGS.md",
+  "docs/IMPLEMENTATION_REPORT_V36_1.md",
+  "docs/VALIDATION_REPORT_V36_1.md",
+  "docs/GIT_HANDOFF.md",
+  "APPLY-TO-CURRENT-REPO.ps1",
+  "APPLY-TO-CURRENT-REPO.sh",
+  ".github/workflows/quality.yml",
+  ".github/workflows/production-check.yml",
   "public/og-image.png",
   "public/documents/Ahmad-Fadlih-CV-ID.pdf",
   "public/documents/Ahmad-Fadlih-CV-EN.pdf",
 ];
 
 for (const file of requiredFiles) {
-  if (!existsSync(join(root, file))) errors.push(`missing release file: ${file}`);
+  if (!existsSync(join(root, file))) errors.push(`missing release-readiness file: ${file}`);
 }
 
 const packageJson = JSON.parse(read("package.json"));
 const lockJson = JSON.parse(read("package-lock.json"));
-if (packageJson.version !== "36.0.0") errors.push("package.json version must be 36.0.0");
-if (lockJson.packages?.[""]?.version !== "36.0.0") errors.push("package-lock root version must be 36.0.0");
-if (!packageJson.scripts?.["release:candidate"]) errors.push("release:candidate script is missing");
-if (!packageJson.scripts?.["validate:visual-qa"]) errors.push("validate:visual-qa script is missing");
-if (!packageJson.scripts?.["validate:final-release"]) errors.push("validate:final-release script is missing");
+const expectedVersion = "36.1.0";
+if (packageJson.version !== expectedVersion) errors.push(`package.json version must be ${expectedVersion}`);
+if (lockJson.version !== expectedVersion) errors.push(`package-lock version must be ${expectedVersion}`);
+if (lockJson.packages?.[""]?.version !== expectedVersion) {
+  errors.push(`package-lock root version must be ${expectedVersion}`);
+}
+for (const script of ["release:candidate", "validate:release-env", "check:public-url:required", "validate:visual-qa", "validate:final-release"]) {
+  if (!packageJson.scripts?.[script]) errors.push(`${script} script is missing`);
+}
 
 const globals = read("src/app/globals.css");
-for (const module of ["tokens", "layout", "home", "pages", "polish", "responsive"]) {
-  if (!globals.includes(`../styles/v36/${module}.css`)) {
-    errors.push(`globals.css missing v36 ${module} module`);
+for (const styleModule of ["tokens", "layout", "home", "pages", "polish", "responsive"]) {
+  if (!globals.includes(`../styles/v36/${styleModule}.css`)) {
+    errors.push(`globals.css missing v36 ${styleModule} module`);
   }
 }
 if (globals.includes("../styles/v29/")) errors.push("globals.css still imports v29 styles");
 
 const readme = read("README.md");
-for (const token of ["V36", "release:candidate", "npm run verify", "Visual QA", "Deployment candidate"]) {
+for (const token of [
+  "V36.1",
+  "Release candidate",
+  "Education and professional context",
+  "Currently building",
+  "npm run verify",
+  "npm run release:candidate",
+  "PORTFOLIO_PUBLIC_URL",
+]) {
   if (!readme.includes(token)) errors.push(`README missing ${token}`);
 }
+for (const forbidden of ["final deployment candidate", "v1.0.0-final-public"]) {
+  if (readme.toLowerCase().includes(forbidden)) errors.push(`README contains premature release claim: ${forbidden}`);
+}
 
-const docsText = requiredFiles
-  .filter((file) => file.endsWith(".md"))
-  .map((file) => read(file))
-  .join("\n");
-for (const token of ["V31", "V32", "V33", "V34", "V35", "V36"]) {
-  if (!docsText.includes(token)) errors.push(`release docs missing ${token}`);
+const hardening = read("docs/RELEASE_HARDENING_V36_1.md");
+for (const token of [
+  "CI recovery",
+  "Privacy boundary",
+  "Dependency baseline",
+  "Deployment gate",
+  "Branch model",
+]) {
+  if (!hardening.includes(token)) errors.push(`release hardening document missing ${token}`);
 }
 
 if (errors.length) {
-  console.error("V36 final release validation failed:");
+  console.error("V36.1 release-readiness validation failed:");
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
 
-console.log("V36 final release validation passed.");
+console.log("V36.1 release-readiness validation passed.");

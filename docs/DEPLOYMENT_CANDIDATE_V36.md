@@ -1,72 +1,57 @@
-# V36 Deployment Candidate
+# V36.1 Deployment Readiness
 
-This portfolio is ready for final local verification before deployment.
+Source ini merupakan release candidate yang siap menjalani final build dan deployment verification. Dokumen ini tidak menyatakan situs sudah live.
 
-## Local verification
-
-```bash
-npm ci
-npm run qa:light
-npm run verify
-npm run release:candidate
-```
-
-## Development preview
-
-```bash
-npm run dev
-```
-
-Open:
-
-```text
-http://localhost:3000/id
-```
-
-## Production build
-
-```bash
-npm run build
-npm run start
-```
-
-## Environment
+## Required environment
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://your-final-domain.example
+NEXT_PUBLIC_SITE_URL=https://your-real-domain.com
+PORTFOLIO_PUBLIC_URL=https://your-real-domain.com
 ENABLE_CONTENT_STUDIO=false
 ```
 
-## Deployment checks
+`NEXT_PUBLIC_SITE_URL` dan `PORTFOLIO_PUBLIC_URL` harus memakai origin HTTPS yang sama.
 
-```text
-NEXT_PUBLIC_SITE_URL points to the final production domain
-CV files are present under public/documents
-sitemap and robots routes return successfully
-Open Graph image renders
-security headers are active
-Content Studio is disabled unless intentionally used
-no private .env file is shipped
+## Local release verification
+
+```bash
+npm ci
+npm run verify
+npm run validate:release-env
 ```
 
-## Release candidate command
+## Deploy
+
+Deploy ke provider yang mendukung Next.js App Router. Setelah deployment tersedia, set repository variable `PORTFOLIO_PUBLIC_URL`, lalu jalankan:
 
 ```bash
 npm run release:candidate
 ```
 
-This command runs qa:light and public URL checks. It does not replace a production browser review.
-
-## Final tag recommendation
-
-Use this package as:
+## Public routes checked
 
 ```text
-Ahmad-Fadlih-Portfolio-v36-final-deployment-candidate
+/id
+/en
+/id/projects
+/en/projects
+/id/resume
+/en/resume
+/sitemap.xml
+/robots.txt
+/api/health
 ```
 
-After production deploy, a separate public release can be tagged as:
+## Production acceptance
 
-```text
-v1.0.0-final-public
-```
+Production status hanya diberikan ketika:
+
+- quality workflow hijau;
+- production URL bukan placeholder;
+- public route check hijau;
+- browser visual QA desktop dan mobile selesai;
+- downloadable CV dapat dibuka;
+- private repository metadata tidak terpapar;
+- repository homepage menunjuk ke domain live.
+
+Tag release dibuat setelah seluruh acceptance condition selesai, bukan sebelum deployment.

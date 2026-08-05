@@ -20,6 +20,10 @@
     gap: 30px;
   }
 
+  .building-grid {
+    grid-template-columns: 1fr;
+  }
+
   .project-detail-hero-grid {
     grid-template-columns: 1fr;
   }
@@ -188,6 +192,8 @@
   }
 
   .featured-project-grid,
+  .context-grid,
+  .building-grid,
   .supporting-project-columns,
   .overview-grid,
   .contribution-grid,

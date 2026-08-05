@@ -1,0 +1,108 @@
+name: Portfolio Quality
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, typecheck, content, tests, and build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NEXT_PUBLIC_SITE_URL: https://portfolio.invalid
+      ENABLE_CONTENT_STUDIO: "false"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Verify portfolio
+        run: npm run verify
+
+  structural-quality:
+    name: Structural quality gates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate ast-grep rules
+        run: npm run quality:ast-grep:test
+
+      - name: Run ast-grep structural rules
+        run: npm run quality:ast-grep
+
+      - name: Run Knip module-graph analysis
+        run: npm run quality:knip
+
+      - name: Run jscpd duplication gate
+        run: npm run quality:jscpd
+
+      - name: Upload duplication report
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: jscpd-report-${{ github.run_id }}
+          path: .quality/jscpd
+          if-no-files-found: ignore
+          retention-days: 7
+
+  fallow-audit:
+    name: Changed-code audit
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Audit changed code with Fallow
+        uses: fallow-rs/fallow@e36026dfc0f00bfdf8dab889efc58ab86e5ec466 # v2.104.0
+        with:
+          command: audit
+          config: .fallowrc.jsonc
+          gate: new-only
+          fail-on-issues: true
+          format: sarif

@@ -4,9 +4,9 @@
     "name": "InternLog AI",
     "featured": true,
     "featuredRank": 1,
-    "repository": "https://github.com/afadlih/Internlog-ai",
+    "repository": null,
     "visibility": "private",
-    "stage": "final",
+    "stage": "active",
     "caseStudyDepth": "full",
     "contentReview": "needs-owner-review",
     "category": {
@@ -308,7 +308,6 @@
             "language": "typescript",
             "lineStart": 22,
             "lineEnd": 50,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/utils/polinema-logbook.ts#L22-L50",
             "code": "function buildRowsFromRequiredDays(\n  logsByDate: Map<string, WeeklyReportLogEntry>,\n  requiredDays: WeeklyReportRequiredDay[],\n) {\n  return [...requiredDays]\n    .sort((left, right) => left.date.localeCompare(right.date))\n    .flatMap((requiredDay) => {\n      if (requiredDay.status !== \"complete\") {\n        return [];\n      }\n\n      const log = logsByDate.get(requiredDay.date);\n\n      if (!log) {\n        return [];\n      }\n\n      return [\n        {\n          activity: log.activity,\n          activityRichText: log.activityRichText ?? null,\n          checkIn: formatOfficialTime(log.checkIn),\n          checkOut: formatOfficialTime(log.checkOut),\n          date: formatOfficialDate(log.date),\n          isBlank: false,\n        } satisfies PolinemaLogbookRow,\n      ];\n    });\n}",
             "linkAccess": "owner-only"
           },
@@ -326,7 +325,6 @@
             "language": "tsx",
             "lineStart": 6,
             "lineEnd": 27,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/components/weekly-report/logbook-workflow-card.tsx#L6-L27",
             "code": "const STEPS = [\n  {\n    description: \"Sistem mengecek hari kerja resmi yang wajib diisi pada minggu terpilih.\",\n    icon: CheckCircle2,\n    title: \"Validasi log wajib\",\n  },\n  {\n    description: \"Buat salinan logbook agar data yang dicetak stabil dan tidak berubah diam-diam.\",\n    icon: FileText,\n    title: \"Buat logbook\",\n  },\n  {\n    description: \"Cek tampilan A4 sebelum disimpan sebagai PDF atau dicetak.\",\n    icon: Printer,\n    title: \"Lihat & Cetak\",\n  },\n  {\n    description: \"Unduh Word resmi untuk arsip dan tanda tangan manual.\",\n    icon: Download,\n    title: \"Unduh Word\",\n  },\n];",
             "linkAccess": "owner-only"
           }
@@ -455,7 +453,6 @@
             "language": "typescript",
             "lineStart": 54,
             "lineEnd": 75,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/ai/prompts/activity.ts#L54-L75",
             "code": "QUALITY TARGET:\n- Make the log specific, concrete, and professional.\n- Prefer this structure when facts are available: work context → action → work object → method/tool → progress/result.\n- Mention the work object if present: feature, page, module, report, dataset, bug, document, UI, API, database, test target, or workflow.\n- Mention progress/result ONLY when the student supplied it.\n- Keep technical terms unchanged only when they are present in the input or are clear names of tools/features.\n- Replace overly technical phrasing with plain work language when the input does not require the technical term.\n- Preserve limited formatting markers when present, such as **bold**, _italic_, ++underline++, `inline code`, and bullet intent.\n- Output one clear entry, ideally 16 to 34 words. Use two short sentences only when one sentence becomes hard to read.\n- Prefer active Indonesian verbs when Indonesian is selected, such as mengembangkan, memperbaiki, menguji, menyusun, mendokumentasikan, meninjau, or menganalisis.\n\nANTI-HALLUCINATION RULES:\n- Use ONLY facts explicitly provided in the activity.\n- Do NOT invent tools, technologies, meetings, collaborators, methods, outputs, metrics, dates, project names, or achievements.\n- If the input is too vague, still provide the safest conservative rewrite, but mark confidence as low or medium.\n- missingDetails must ask for concrete details needed to make the log stronger, not generic advice.\n- Avoid filler phrases such as \"melakukan pekerjaan dengan baik\", \"sesuai arahan\", \"meningkatkan kemampuan\", \"berpartisipasi aktif\", \"komprehensif\", \"strategis\", \"optimal\", or \"inovatif\" unless those facts are explicitly present.\n\nOUTPUT:\n- Use ${getLanguageLabel(language)} for every JSON value.\n- Return strict JSON only with keys: suggestedText, qualityNote, missingDetails, confidence.\n- confidence must be exactly one of: high, medium, low.",
             "linkAccess": "owner-only"
           },
@@ -473,7 +470,6 @@
             "language": "typescript",
             "lineStart": 3,
             "lineEnd": 10,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/constants/ai-usage.ts#L3-L10",
             "code": "export const AI_FEATURE_USAGE_COST = {\n  activityCheck: 1,\n  activityGrammar: 1,\n  activityImprove: 1,\n  finalRecapAssistant: 3,\n  weeklyReportReview: 2,\n  weeklySummary: 2,\n} as const;",
             "linkAccess": "owner-only"
           }
@@ -603,7 +599,6 @@
             "language": "typescript",
             "lineStart": 52,
             "lineEnd": 68,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/utils/polinema-logbook.ts#L52-L68",
             "code": "export function buildPolinemaPrintableRows(report: WeeklyReportDocument): PolinemaLogbookRow[] {\n  const logsByDate = new Map(report.logs.map((log) => [log.date, log]));\n  const filledRows = buildRowsFromRequiredDays(logsByDate, report.requiredDays);\n  const blankRowCount = Math.max(0, POLINEMA_PRINTABLE_BODY_ROWS - filledRows.length);\n\n  return [\n    ...filledRows,\n    ...Array.from({ length: blankRowCount }, () => ({\n      activity: \"\",\n      activityRichText: null,\n      checkIn: \"\",\n      checkOut: \"\",\n      date: \"\",\n      isBlank: true,\n    } satisfies PolinemaLogbookRow)),\n  ].slice(0, POLINEMA_PRINTABLE_BODY_ROWS);\n}",
             "linkAccess": "owner-only"
           },
@@ -621,7 +616,6 @@
             "language": "typescript",
             "lineStart": 115,
             "lineEnd": 132,
-            "href": "https://github.com/afadlih/Internlog-ai/blob/main/src/ai/prompts/final-recap.ts#L115-L132",
             "code": "Return valid JSON only with this exact shape:\n{\n  \"executiveSummary\": \"2-4 sentence final internship recap based only on logs\",\n  \"finalReportDraft\": \"2-4 paragraphs for final internship report material\",\n  \"portfolioSummary\": \"1 portfolio-ready paragraph\",\n  \"cvBullets\": [\"3-5 concise CV/resume bullets based only on evidence\"],\n  \"contributionBullets\": [\"3-5 contribution bullets\"],\n  \"skillBullets\": [\"3-6 skill/experience bullets based on activity evidence\"],\n  \"technicalSkills\": [\n    {\"skill\":\"skill name visible/inferable from logs\", \"evidence\":[\"1-2 short evidence strings from logged activities\"]}\n  ],\n  \"softSkills\": [\n    {\"skill\":\"soft skill name\", \"evidence\":[\"1-2 short evidence strings from logged activities\"]}\n  ],\n  \"projectHighlights\": [\"3-5 important activity/project highlights from the logs\"],\n  \"interviewTalkingPoints\": [\"3-5 prompts the student can use to explain internship work in interviews\"],\n  \"safetyNote\": \"short note reminding the student to verify facts before using the material\"\n}",
             "linkAccess": "owner-only"
           }
@@ -786,14 +780,22 @@
       }
     ],
     "accent": "cobalt",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": "2.8.1",
+    "developmentStatus": {
+      "id": "Pengembangan aktif",
+      "en": "Active development"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "aquasense",
     "name": "AquaSense",
     "featured": true,
     "featuredRank": 2,
-    "repository": "https://github.com/afadlih/AquaSense",
+    "repository": null,
     "visibility": "private",
     "stage": "active",
     "caseStudyDepth": "full",
@@ -1099,7 +1101,6 @@
             "language": "go",
             "lineStart": 12,
             "lineEnd": 24,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/backend/internal/service/telemetry_service.go#L12-L24",
             "code": "type TelemetryService struct {\n\trepo repository.TelemetryRepository\n}\n\nfunc NewTelemetryService(repo repository.TelemetryRepository) TelemetryService {\n\treturn TelemetryService{repo: repo}\n}\nfunc (s TelemetryService) List(ctx context.Context, pondID string) []domain.Telemetry {\n\treturn s.repo.ListTelemetry(ctx, pondID)\n}\nfunc (s TelemetryService) Latest(ctx context.Context, pondID string) (domain.Telemetry, bool) {\n\treturn s.repo.GetLatestTelemetry(ctx, pondID)\n}",
             "linkAccess": "owner-only"
           },
@@ -1117,7 +1118,6 @@
             "language": "tsx",
             "lineStart": 16,
             "lineEnd": 27,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/src/app/%28app%29/telemetry/page.tsx#L16-L27",
             "code": "const telemetryColumns: GridColDef<PondTelemetry>[] = [\n  { field: \"timestamp\", headerName: \"Waktu Sensor\", minWidth: 150, flex: 1, renderCell: (params) => formatDateTime(params.row.timestamp) },\n  { field: \"receivedAt\", headerName: \"Diterima\", minWidth: 150, flex: 1, renderCell: (params) => formatDateTime(params.row.receivedAt) },\n  { field: \"distanceCm\", headerName: \"Jarak\", minWidth: 100, flex: 0.7 },\n  { field: \"waterLevelCm\", headerName: \"Ketinggian Air\", minWidth: 130, flex: 0.8 },\n  { field: \"volumeLiter\", headerName: \"Volume Liter\", minWidth: 120, flex: 0.8 },\n  { field: \"payloadSizeBytes\", headerName: \"Ukuran Payload\", minWidth: 130, flex: 0.8 },\n  { field: \"packetStatus\", headerName: \"Status Paket\", minWidth: 130, flex: 0.9, renderCell: (params) => <StatusChip label={params.row.packetStatus} /> },\n  { field: \"mqttPublishStatus\", headerName: \"Publish MQTT\", minWidth: 130, flex: 0.9, renderCell: (params) => <StatusChip label={params.row.mqttPublishStatus} /> },\n  { field: \"floatHigh\", headerName: \"Pelampung Atas\", minWidth: 130, flex: 0.8, renderCell: (params) => <StatusChip label={params.row.floatHigh ? \"ACTIVE\" : \"INACTIVE\"} /> },\n  { field: \"floatLow\", headerName: \"Pelampung Bawah\", minWidth: 130, flex: 0.8, renderCell: (params) => <StatusChip label={params.row.floatLow ? \"ACTIVE\" : \"INACTIVE\"} /> },\n];",
             "linkAccess": "owner-only"
           }
@@ -1247,7 +1247,6 @@
             "language": "typescript",
             "lineStart": 5,
             "lineEnd": 19,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/src/lib/auth/access.ts#L5-L19",
             "code": "const routeRoleMap: Record<string, AuthRole[]> = {\n  \"/manual-control\": [\"OPERATOR\", \"SUPERVISOR\", \"ADMINISTRATOR\"],\n  \"/settings\": [\"SUPERVISOR\", \"ADMINISTRATOR\"],\n  \"/users-roles\": [\"ADMINISTRATOR\"],\n  \"/audit-log\": [\"SUPERVISOR\", \"ADMINISTRATOR\"],\n};\n\nexport function canAccessRoute(pathname: string, role: AuthRole) {\n  const match = Object.entries(routeRoleMap).find(([route]) => pathname.startsWith(route));\n  if (!match) {\n    return true;\n  }\n\n  return match[1].includes(role);\n}",
             "linkAccess": "owner-only"
           },
@@ -1265,7 +1264,6 @@
             "language": "go",
             "lineStart": 14,
             "lineEnd": 24,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/backend/internal/service/audit_service.go#L14-L24",
             "code": "type AuditService struct{ repo repository.AuditRepository }\n\nfunc NewAuditService(repo repository.AuditRepository) AuditService { return AuditService{repo: repo} }\nfunc (s AuditService) List(ctx context.Context) []domain.AuditLog  { return s.repo.ListAuditLogs(ctx) }\nfunc (s AuditService) Get(ctx context.Context, id string) (domain.AuditLog, bool) {\n\treturn s.repo.GetAuditLog(ctx, id)\n}\nfunc (s AuditService) Append(ctx context.Context, actor domain.User, action string, resourceType string, resourceID string, result string, metadata map[string]any) domain.AuditLog {\n\tnow := timeutil.Now()\n\treturn s.repo.AppendAuditLog(ctx, domain.AuditLog{AuditID: fmt.Sprintf(\"AUD-%d\", now.UnixNano()), ActorUserID: actor.UserID, ActorName: actor.Name, Action: action, ResourceType: resourceType, ResourceID: resourceID, Result: result, IPAddress: \"127.0.0.1\", UserAgent: \"AquaSense Backend Phase 3.0\", Metadata: metadata, CreatedAt: now})\n}",
             "linkAccess": "owner-only"
           }
@@ -1395,7 +1393,6 @@
             "language": "go",
             "lineStart": 22,
             "lineEnd": 56,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/backend/internal/app/app.go#L22-L56",
             "code": "func New(cfg config.Config, logger *log.Logger) App {\n\tstore := memory.NewStore()\n\tpublisher := service.NoopMQTTPublisher{Logger: logger}\n\n\tauthService := service.NewAuthService(store)\n\tpondService := service.NewPondService(store)\n\ttelemetryService := service.NewTelemetryService(store)\n\tvolumeService := service.NewVolumeService(store, store)\n\talarmService := service.NewAlarmService(store)\n\tcommandService := service.NewCommandService(store, store, store, publisher)\n\tuserService := service.NewUserService(store)\n\tauditService := service.NewAuditService(store)\n\tedgeService := service.NewEdgeService(store)\n\tlifecycleService := service.NewLifecycleService(store)\n\tsettingsService := service.NewSettingsService(store)\n\n\trouter := apphttp.NewRouter(apphttp.RouterDeps{\n\t\tConfig:    cfg,\n\t\tLogger:    logger,\n\t\tHealth:    handlers.HealthHandler{Config: cfg},\n\t\tAuth:      handlers.AuthHandler{Service: authService},\n\t\tPonds:     handlers.PondHandler{Service: pondService},\n\t\tTelemetry: handlers.TelemetryHandler{Service: telemetryService},\n\t\tVolume:    handlers.VolumeHandler{Service: volumeService},\n\t\tAlarms:    handlers.AlarmHandler{Service: alarmService},\n\t\tCommands:  handlers.CommandHandler{Service: commandService},\n\t\tUsers:     handlers.UserHandler{Service: userService},\n\t\tAudit:     handlers.AuditHandler{Service: auditService},\n\t\tEdge:      handlers.EdgeHandler{Service: edgeService},\n\t\tLifecycle: handlers.LifecycleHandler{Service: lifecycleService},\n\t\tSettings:  handlers.SettingsHandler{Service: settingsService},\n\t})\n\n\treturn App{Config: cfg, Router: router, Logger: logger}\n}",
             "linkAccess": "owner-only"
           },
@@ -1413,7 +1410,6 @@
             "language": "tsx",
             "lineStart": 39,
             "lineEnd": 58,
-            "href": "https://github.com/afadlih/AquaSense/blob/main/src/app/%28app%29/edge-health/page.tsx#L39-L58",
             "code": "      <Box sx={{ display: \"grid\", gap: 3 }}>\n        <Box sx={{ display: \"grid\", gap: 3, gridTemplateColumns: { xs: \"1fr\", md: \"repeat(4, minmax(0, 1fr))\" } }}>\n          <MetricCard label=\"Status Perangkat Edge\" value={edgeDevice.status} helperText=\"Ketersediaan node edge.\" status={edgeDevice.status} />\n          <MetricCard label=\"MQTT\" value=\"Terhubung\" helperText=\"Status sesi broker.\" status={edgeDevice.mqttStatus} />\n          <MetricCard label=\"Service Edge\" value=\"Berjalan\" helperText=\"Status service aquasense-edge.\" status={edgeDevice.serviceStatus} />\n          <MetricCard label=\"Keselamatan GPIO\" value=\"OK\" helperText=\"Tidak ada gangguan wiring pada data contoh.\" status=\"OK\" />\n        </Box>\n\n        <Box sx={{ display: \"grid\", gap: 3, gridTemplateColumns: { xs: \"1fr\", lg: \"1fr 1fr\" } }}>\n          <Card>\n            <CardContent>\n              <Stack spacing={1.5}>\n                <Stack direction=\"row\" sx={{ justifyContent: \"space-between\", alignItems: \"center\" }}>\n                  <Typography variant=\"h6\">Aliran Data Sensor</Typography>\n                  <StatusChip label={edgeDevice.sensorDataFlow.status} />\n                </Stack>\n                <Typography color=\"text.secondary\">Data terakhir diterima: {formatDateTime(edgeDevice.sensorDataFlow.lastPayloadAt)}</Typography>\n                <Typography color=\"text.secondary\">Paket hari ini: {edgeDevice.sensorDataFlow.packetsToday.toLocaleString(\"id-ID\")}</Typography>\n                <Typography color=\"text.secondary\">Interval rata-rata: {edgeDevice.sensorDataFlow.averageIntervalSeconds} detik</Typography>\n                <Typography color=\"text.secondary\">Tingkat keberhasilan publish: {edgeDevice.sensorDataFlow.mqttPublishSuccessRate}%</Typography>",
             "linkAccess": "owner-only"
           }
@@ -1604,16 +1600,24 @@
       }
     ],
     "accent": "teal",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": "2.3.0-rc15",
+    "developmentStatus": {
+      "id": "Release candidate",
+      "en": "Release candidate"
+    },
+    "currentPriority": true,
+    "currentRank": 1,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "formai",
     "name": "FormAI",
     "featured": true,
     "featuredRank": 3,
-    "repository": "https://github.com/afadlih/AI-Form-Automation-System",
+    "repository": null,
     "visibility": "private",
-    "stage": "active",
+    "stage": "prototype",
     "caseStudyDepth": "full",
     "contentReview": "needs-owner-review",
     "category": {
@@ -1919,7 +1923,6 @@
             "language": "python",
             "lineStart": 126,
             "lineEnd": 155,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/backend/services/form_analyzer.py#L126-L155",
             "code": "def _build_field(\n    key: str,\n    label: str,\n    field_type: str,\n    options: list[str],\n    required: bool,\n    page_index: int,\n    source: str,\n    entry_index: int | None = None,\n) -> dict:\n    ui_hints: list[str] = []\n    if field_type in {\"linear_scale\", \"grid_radio\", \"grid_checkbox\"}:\n        ui_hints.append(\"complex_choice\")\n    if field_type in {\"date\", \"time\", \"datetime\"}:\n        ui_hints.append(\"structured_input\")\n    is_sentinel = key.endswith(\"_sentinel\")\n    return {\n        \"id\": key,\n        \"label\": label or key,\n        \"normalized_label\": _normalize_label(label or key),\n        \"type\": field_type,\n        \"options\": options,\n        \"required\": required,\n        \"page_index\": page_index,\n        \"entry_index\": entry_index,\n        \"source\": source,\n        \"ui_hints\": ui_hints,\n        \"is_fill_target\": not is_sentinel and field_type != \"section\",\n        \"aux_type\": \"sentinel\" if is_sentinel else \"answer\",\n    }",
             "linkAccess": "owner-only"
           },
@@ -1937,7 +1940,6 @@
             "language": "python",
             "lineStart": 69,
             "lineEnd": 122,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/backend/models/schemas.py#L69-L122",
             "code": "class FormFieldSchema(BaseModel):\n    id: str\n    label: str\n    normalized_label: str | None = None\n    type: (\n        Literal[\n            \"text\",\n            \"radio\",\n            \"checkbox\",\n            \"dropdown\",\n            \"email\",\n            \"number\",\n            \"date\",\n            \"time\",\n            \"datetime\",\n            \"linear_scale\",\n            \"grid_radio\",\n            \"grid_checkbox\",\n            \"unknown\",\n        ]\n        | str\n    )\n    options: list[str] = Field(default_factory=list)\n    required: bool = False\n    page_index: int | None = None\n    entry_index: int | None = None\n    source: str | None = None\n    ui_hints: list[str] = Field(default_factory=list)\n    is_fill_target: bool = True\n    aux_type: Literal[\"sentinel\", \"helper\", \"answer\"] | str | None = None\n\n\nclass AnalyzeResponse(BaseModel):\n    fields: list[FormFieldSchema]\n    field_count: int\n    field_count_total: int | None = None\n    field_count_mapped: int | None = None\n    field_count_unresolved: int | None = None\n    unresolved_fields: list[dict] = Field(default_factory=list)\n    raw_url: str\n    resolved_url: str | None = None\n    schema_version: str | None = None\n    analysis_confidence: float | None = None\n    field_page_map: dict[str, int] = Field(default_factory=dict)\n    is_multistep: bool = False\n    page_count: int = 1\n    submit_action: str | None = None\n    fbzx: str | None = None\n    fvv: str | None = None\n    email_gate_detected: bool | None = None\n    email_gate_blocked: bool | None = None\n    email_gate_reason: str | None = None\n    suggested_rules: list[str] = Field(default_factory=list)\n    error: str | None = None",
             "linkAccess": "owner-only"
           }
@@ -2070,7 +2072,6 @@
             "language": "python",
             "lineStart": 126,
             "lineEnd": 184,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/backend/services/csv_row_processor.py#L126-L184",
             "code": "def normalize_csv_row(row_data: dict[str, Any]) -> dict[str, Any]:\n    warnings: list[str] = []\n    normalized_extra: dict[str, Any] = {}\n\n    for key, value in row_data.items():\n        key_s = str(key).strip()\n        if not key_s:\n            continue\n        normalized_extra[key_s] = value\n\n    name = _find_first(row_data, {\"name\", \"nama\"}) or str(row_data.get(\"name\", \"\")).strip() or str(row_data.get(\"nama\", \"\")).strip()\n    review_text = _find_review_value(row_data)\n    rating_raw = _find_rating_value(row_data)\n\n    rating_value = 6\n    rating_source = \"default\"\n    if rating_raw:\n        try:\n            numeric = int(float(rating_raw))\n            rating_value = max(1, min(10, numeric))\n            rating_source = \"numeric\"\n        except Exception:\n            warnings.append(f\"invalid_rating_value:{rating_raw}\")\n    elif review_text:\n        mapped = validate_structured_output(sentiment_to_structured(review_text))\n        rating_value = int(mapped.get(\"rating\", 6))\n        rating_source = \"review_sentiment\"\n    else:\n        warnings.append(\"missing_rating_source\")\n\n    band = _rating_band_from_value(rating_value)\n    kepuasan = KEPUASAN_LABELS[band]\n\n    email_value, email_source = _find_email_value(row_data, review_text)\n    sanitized_email, email_sanitized, email_sanitization_reason = _sanitize_email(email_value)\n    if sanitized_email is None:\n        warnings.append(\"missing_email\")\n    if email_sanitization_reason:\n        warnings.extend(email_sanitization_reason.split(\",\"))\n\n    return {\n        \"Nama\": name or None,\n        \"Name\": name or None,\n        \"Email\": sanitized_email,\n        \"Rating\": int(rating_value),\n        \"Kepuasan\": kepuasan,\n        \"Satisfaction\": kepuasan,\n        \"Komentar\": review_text or None,\n        \"Comment\": review_text or None,\n        \"Persetujuan\": \"I agree to be a respondent\",\n        \"Consent\": \"I agree to be a respondent\",\n        \"sentiment_band\": band,\n        \"csv_rating_source\": rating_source,\n        \"csv_email_source\": email_source,\n        \"csv_email_sanitized\": email_sanitized,\n        \"csv_email_sanitization_reason\": email_sanitization_reason,\n        \"csv_row_mapping_warnings\": warnings,\n        \"csv_passthrough\": normalized_extra,\n    }",
             "linkAccess": "owner-only"
           },
@@ -2088,7 +2089,6 @@
             "language": "python",
             "lineStart": 52,
             "lineEnd": 115,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/backend/services/data_generator.py#L52-L115",
             "code": "def _find_rule_candidates(field: dict, rules: dict) -> list[tuple[str, dict, float, str]]:\n    label = str(field.get(\"label\", \"\"))\n    normalized = _normalize_text(label)\n    tokens = _token_set(label)\n    field_id = str(field.get(\"id\", \"\")).strip()\n\n    if not rules:\n        return []\n\n    norm_map = {_normalize_text(str(key)): str(key) for key in rules.keys()}\n    by_id_map = {_entry_from_rule_key(str(key)): str(key) for key in rules.keys() if _entry_from_rule_key(str(key))}\n\n    candidates: list[tuple[str, dict, float, str]] = []\n\n    if field_id and field_id in by_id_map:\n        key = by_id_map[field_id]\n        candidates.append((key, rules[key], 1.0, \"entry_id_exact\"))\n\n    if label in rules:\n        candidates.append((label, rules[label], 0.99, \"label_exact\"))\n\n    if normalized in norm_map:\n        key = norm_map[normalized]\n        candidates.append((key, rules[key], 0.98, \"label_normalized\"))\n\n    for alias_values in ALIAS_HINTS.values():\n        if tokens.intersection(alias_values):\n            for key, value in rules.items():\n                key_tokens = _token_set(str(key))\n                if key_tokens.intersection(alias_values):\n                    candidates.append((str(key), value, 0.96, \"alias\"))\n\n    # Token-overlap matching for long labels/questions.\n    for key, value in rules.items():\n        key_tokens = _token_set(str(key))\n        if not key_tokens:\n            continue\n        inter = tokens.intersection(key_tokens)\n        if not inter:\n            continue\n        union = tokens.union(key_tokens)\n        overlap = len(inter) / max(1, len(union))\n        keyword_boost = 0.08 if inter.intersection(SEMANTIC_KEYWORDS) else 0.0\n        score = overlap + keyword_boost\n        if score >= 0.34:\n            candidates.append((str(key), value, min(0.95, score), \"token_overlap\"))\n\n    best_key = \"\"\n    best_ratio = 0.0\n    for key in rules.keys():\n        ratio = SequenceMatcher(a=normalized, b=_normalize_text(str(key))).ratio()\n        if ratio > best_ratio:\n            best_ratio = ratio\n            best_key = str(key)\n    if best_ratio >= 0.9 and best_key:\n        candidates.append((best_key, rules[best_key], best_ratio, \"fuzzy\"))\n\n    uniq: dict[tuple[str, str], tuple[str, dict, float, str]] = {}\n    for key, rule, score, mode in candidates:\n        idx = (key, mode)\n        if idx not in uniq or uniq[idx][2] < score:\n            uniq[idx] = (key, rule, score, mode)\n\n    return sorted(uniq.values(), key=lambda item: item[2], reverse=True)",
             "linkAccess": "owner-only"
           }
@@ -2222,7 +2222,6 @@
             "language": "python",
             "lineStart": 130,
             "lineEnd": 159,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/backend/services/orchestrator.py#L130-L159",
             "code": "def _trace_from_fill_plan(fill_plan: list[dict], payload: dict[str, str]) -> list[dict]:\n    trace: list[dict] = []\n    for plan in fill_plan:\n        field_id = str(plan.get(\"id\", \"\")).strip()\n        if not field_id or field_id not in payload:\n            continue\n        source = str(plan.get(\"value_source\", \"ai\")).lower()\n        if source == \"python_rule\":\n            resolved_by = \"rule\"\n            confidence = \"high\"\n        elif source == \"gemini_rule\":\n            resolved_by = \"rule\"\n            confidence = \"medium\"\n        elif source in {\"python_fallback\", \"fallback\"}:\n            resolved_by = \"fallback\"\n            confidence = \"low\"\n        else:\n            resolved_by = \"ai\"\n            confidence = \"medium\"\n        trace.append(\n            {\n                \"id\": field_id,\n                \"label\": str(plan.get(\"label\", field_id)),\n                \"resolved_by\": resolved_by,\n                \"confidence\": confidence,\n                \"success\": True,\n                \"reason\": \"generated\",\n            }\n        )\n    return trace",
             "linkAccess": "owner-only"
           },
@@ -2240,7 +2239,6 @@
             "language": "typescript",
             "lineStart": 53,
             "lineEnd": 93,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/frontend/src/lib/run-readiness.ts#L53-L93",
             "code": "export function deriveCheckStatus(args: {\n  checkData: RunPreviewResponse | null;\n  checkIsStale: boolean;\n  isChecking: boolean;\n  runCompleted: boolean;\n}): CheckReadinessStatus {\n  if (args.isChecking) return \"running\";\n  if (args.runCompleted) return \"completed\";\n  if (!args.checkData) return \"not_checked\";\n  if (args.checkIsStale) return \"not_checked\";\n  if ((args.checkData.summary.blocked_count ?? 0) > 0) return \"blocked\";\n  if ((args.checkData.summary.ready_with_warnings_count ?? 0) > 0) return \"ready_with_warnings\";\n  return \"ready\";\n}\n\nexport function resolveCheckGateMessage(args: {\n  hasAnalyzed: boolean;\n  respondentCount: number;\n  baseRunDisabledReason: string | null;\n  checkData: RunPreviewResponse | null;\n  checkIsStale: boolean;\n  lang?: UiLang;\n}): string | null {\n  const lang = args.lang ?? \"id\";\n  if (args.baseRunDisabledReason) return args.baseRunDisabledReason;\n  if (!args.hasAnalyzed || args.respondentCount < 1) return null;\n  if (!args.checkData) {\n    return lang === \"en\" ? \"Run Quick Check first.\" : \"Jalankan Cek Kesiapan terlebih dahulu.\";\n  }\n  if (args.checkIsStale) {\n    return lang === \"en\"\n      ? \"Quick Check result is stale. Run Quick Check again.\"\n      : \"Hasil Cek Kesiapan sudah berubah. Jalankan ulang Cek Kesiapan.\";\n  }\n  if ((args.checkData.summary.blocked_count ?? 0) > 0) {\n    return lang === \"en\"\n      ? `${args.checkData.summary.blocked_count} blockers found. Fix them before running automation.`\n      : `Terdapat ${args.checkData.summary.blocked_count} penghambat. Perbaiki sebelum menjalankan otomasi.`;\n  }\n  return null;\n}",
             "linkAccess": "owner-only"
           },
@@ -2258,7 +2256,6 @@
             "language": "tsx",
             "lineStart": 57,
             "lineEnd": 80,
-            "href": "https://github.com/afadlih/AI-Form-Automation-System/blob/main/frontend/src/components/ResultDashboard.tsx#L57-L80",
             "code": "export function ResultDashboard({ results, isLoading, summary, lang = \"id\" }: ResultDashboardProps) {\n  const [showDiagnostics, setShowDiagnostics] = useState(false);\n  const { diagnosisByIndex } = useResultDiagnosis(results, lang);\n\n  const total = results.length;\n  const successCount = results.filter((r) => r.status === \"success\").length;\n  const failedCount = results.filter((r) => r.status === \"failed\").length;\n  const skippedCount = results.filter((r) => r.status === \"skipped\").length;\n  const completedCount = results.filter((r) => r.status !== \"pending\").length;\n  const progress = total > 0 ? (completedCount / total) * 100 : 0;\n\n  const requiredUnresolved = results.reduce((acc, row) => acc + (row.meta?.required_unresolved_count ?? 0), 0);\n  const bindingRetries = results.reduce((acc, row) => acc + (row.meta?.binding_retry_count ?? 0), 0);\n  const forceFilled = results.reduce((acc, row) => acc + (row.meta?.force_filled_count ?? 0), 0);\n  const forceFailed = results.reduce((acc, row) => acc + (row.meta?.force_fill_failed_count ?? 0), 0);\n  const sentimentUsed = results.filter((row) => row.meta?.sentiment_mapping_used).length;\n  const requiredRecovered = results.reduce((acc, row) => acc + (row.meta?.required_binding_recovered_count ?? 0), 0);\n  const requiredFailed = results.reduce((acc, row) => acc + (row.meta?.required_binding_failed_count ?? 0), 0);\n  const csvNormalized = results.filter((row) => row.meta?.csv_row_normalized).length;\n  const csvWarned = results.filter((row) => (row.meta?.csv_row_mapping_warnings?.length ?? 0) > 0).length;\n  const csvEmailSanitized = results.filter((row) => row.meta?.csv_email_sanitized).length;\n  const csvFieldsUsed = results.reduce((acc, row) => acc + (row.meta?.csv_fields_used_count ?? 0), 0);\n  const aiFieldsUsed = results.reduce((acc, row) => acc + (row.meta?.ai_fields_used_count ?? 0), 0);\n  const aiSkippedFromCsv = results.reduce((acc, row) => acc + (row.meta?.ai_skipped_due_to_csv_count ?? 0), 0);",
             "linkAccess": "owner-only"
           }
@@ -2415,16 +2412,24 @@
       }
     ],
     "accent": "steel",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": "0.1.0",
+    "developmentStatus": {
+      "id": "Pemeliharaan prototipe",
+      "en": "Prototype maintenance"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "polinema-adaptive-toeic",
     "name": "Polinema Adaptive TOEIC",
     "featured": false,
     "featuredRank": null,
-    "repository": "https://github.com/afadlih/Polinema_Adaptive_TOEIC",
+    "repository": null,
     "visibility": "private",
-    "stage": "validated",
+    "stage": "active",
     "caseStudyDepth": "full",
     "contentReview": "needs-owner-review",
     "category": {
@@ -2671,7 +2676,6 @@
               "en": "Recommendation engine"
             },
             "path": "src/lib/recommendation-engine.ts",
-            "href": "https://github.com/afadlih/Polinema_Adaptive_TOEIC/blob/main/src/lib/recommendation-engine.ts#L42-L64",
             "note": {
               "id": "Mengubah mastery dan evidence menjadi kategori, alasan, dan next action yang mudah dipahami mahasiswa.",
               "en": "Turns mastery and evidence into category, reason, and next action students can understand."
@@ -2773,7 +2777,6 @@
               "en": "Assessment repository types"
             },
             "path": "src/lib/assessment/repository.ts",
-            "href": "https://github.com/afadlih/Polinema_Adaptive_TOEIC/blob/main/src/lib/assessment/repository.ts#L23-L44",
             "note": {
               "id": "Mendefinisikan bentuk data assessment summary agar UI tahu status attempt, score, dan alasan lock.",
               "en": "Defines assessment summary data so the UI knows attempt status, score, and lock reasons."
@@ -2875,7 +2878,6 @@
               "en": "Session and cookie handling"
             },
             "path": "src/lib/auth/session.ts",
-            "href": "https://github.com/afadlih/Polinema_Adaptive_TOEIC/blob/main/src/lib/auth/session.ts#L73-L94",
             "note": {
               "id": "Menunjukkan pembuatan session, token hash, dan cookie HttpOnly untuk akses role-based.",
               "en": "Shows session creation, token hashing, and HttpOnly cookie handling for role-based access."
@@ -2998,15 +3000,23 @@
       }
     ],
     "accent": "cobalt",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": "2.3.1",
+    "developmentStatus": {
+      "id": "Pengembangan aktif",
+      "en": "Active development"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "orthobreath",
     "name": "OrthoBreath",
     "featured": false,
     "featuredRank": null,
-    "repository": "https://github.com/afadlih/OrthoBreath",
-    "visibility": "public",
+    "repository": null,
+    "visibility": "private",
     "stage": "prototype",
     "caseStudyDepth": "overview",
     "contentReview": "needs-owner-review",
@@ -3179,17 +3189,16 @@
       {
         "id": "orthobreath-repo",
         "type": "repository",
-        "status": "verified",
+        "status": "documented",
         "title": {
           "id": "Repository publik",
           "en": "Public repository"
         },
         "description": {
-          "id": "Source code dan dokumentasi dapat diperiksa melalui GitHub.",
-          "en": "Source code and documentation can be inspected on GitHub."
+          "id": "Repository bersifat privat. Bukti publik dibatasi pada studi kasus dan artefak yang telah disanitasi.",
+          "en": "The repository is private. Public proof is limited to sanitized case-study material and approved artifacts."
         },
-        "safeToPublish": true,
-        "href": "https://github.com/afadlih/OrthoBreath"
+        "safeToPublish": false
       },
       {
         "id": "orthobreath-screenshot",
@@ -3235,6 +3244,442 @@
       }
     ],
     "accent": "sky",
+    "screenshotStatus": "needed",
+    "version": "1.8.0",
+    "developmentStatus": {
+      "id": "Prototipe aktif",
+      "en": "Active prototype"
+    },
+    "currentPriority": true,
+    "currentRank": 2,
+    "lastReviewedAt": "2026-08-05"
+  },
+  {
+    "slug": "skripsiops-ai",
+    "name": "SkripsiOps AI",
+    "featured": false,
+    "featuredRank": null,
+    "repository": null,
+    "visibility": "private",
+    "stage": "active",
+    "version": "4.0.0",
+    "developmentStatus": {
+      "id": "Pengembangan aktif",
+      "en": "Active development"
+    },
+    "currentPriority": true,
+    "currentRank": 3,
+    "lastReviewedAt": "2026-08-05",
+    "caseStudyDepth": "overview",
+    "contentReview": "needs-owner-review",
+    "category": {
+      "id": "Operasi penelitian berbasis bukti",
+      "en": "Evidence-first research operations"
+    },
+    "summary": {
+      "id": "Workspace pendamping skripsi untuk menghubungkan topik, literatur, bimbingan, revisi, eksperimen, dan kesiapan seminar hasil.",
+      "en": "A thesis operations workspace connecting topics, literature, supervision, revisions, experiments, and seminar readiness."
+    },
+    "problem": {
+      "id": "Proses skripsi biasanya tersebar di banyak dokumen dan percakapan sehingga keputusan, revisi, dan bukti sulit ditelusuri.",
+      "en": "Thesis work is often fragmented across documents and conversations, making decisions, revisions, and evidence difficult to trace."
+    },
+    "outcome": {
+      "id": "Baseline v4.0.0 memusatkan workflow penelitian, evidence traceability, readiness checks, dan bounded AI assistance.",
+      "en": "The v4.0.0 baseline centralizes research workflows, evidence traceability, readiness checks, and bounded AI assistance."
+    },
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "RAG",
+      "Docker"
+    ],
+    "flow": [
+      {
+        "id": "Petakan topik dan kebutuhan",
+        "en": "Map topic and requirements"
+      },
+      {
+        "id": "Kelola literatur dan bukti",
+        "en": "Manage literature and evidence"
+      },
+      {
+        "id": "Catat revisi dan eksperimen",
+        "en": "Track revisions and experiments"
+      },
+      {
+        "id": "Ukur kesiapan seminar",
+        "en": "Assess seminar readiness"
+      }
+    ],
+    "highlights": [
+      {
+        "id": "Evidence-first workflow",
+        "en": "Evidence-first workflow"
+      },
+      {
+        "id": "Traceable revision history",
+        "en": "Traceable revision history"
+      },
+      {
+        "id": "Bounded AI assistance",
+        "en": "Bounded AI assistance"
+      }
+    ],
+    "contribution": {
+      "role": {
+        "id": "Pengembang produk",
+        "en": "Product developer"
+      },
+      "teamContext": {
+        "id": "Ringkasan publik dibatasi pada area yang aman dipublikasikan.",
+        "en": "The public summary is limited to areas safe to publish."
+      },
+      "scope": {
+        "id": "Arsitektur, workflow utama, quality gate, dan kesiapan operasional.",
+        "en": "Architecture, core workflows, quality gates, and operational readiness."
+      },
+      "responsibilities": [
+        {
+          "id": "Menyusun alur utama dan kontrak data.",
+          "en": "Designed core workflows and data contracts."
+        },
+        {
+          "id": "Menjaga implementasi, pengujian, dan dokumentasi tetap selaras.",
+          "en": "Kept implementation, testing, and documentation aligned."
+        }
+      ],
+      "ownership": [
+        {
+          "id": "Studi kasus hanya memuat informasi yang telah disanitasi.",
+          "en": "The case study only includes sanitized information."
+        }
+      ]
+    },
+    "architecture": {
+      "summary": {
+        "id": "Workspace pendamping skripsi untuk menghubungkan topik, literatur, bimbingan, revisi, eksperimen, dan kesiapan seminar hasil.",
+        "en": "A thesis operations workspace connecting topics, literature, supervision, revisions, experiments, and seminar readiness."
+      },
+      "components": [
+        {
+          "name": "Web application",
+          "responsibility": {
+            "id": "Menyediakan workspace penelitian dan alur tugas.",
+            "en": "Provides the research workspace and task flows."
+          }
+        },
+        {
+          "name": "Evidence layer",
+          "responsibility": {
+            "id": "Menghubungkan klaim, sumber, revisi, dan hasil eksperimen.",
+            "en": "Connects claims, sources, revisions, and experiment results."
+          }
+        },
+        {
+          "name": "AI service boundary",
+          "responsibility": {
+            "id": "Membatasi rekomendasi AI dengan retrieval dan validasi.",
+            "en": "Constrains AI recommendations through retrieval and validation."
+          }
+        }
+      ],
+      "dataFlow": [
+        {
+          "id": "Petakan topik dan kebutuhan",
+          "en": "Map topic and requirements"
+        },
+        {
+          "id": "Kelola literatur dan bukti",
+          "en": "Manage literature and evidence"
+        },
+        {
+          "id": "Catat revisi dan eksperimen",
+          "en": "Track revisions and experiments"
+        },
+        {
+          "id": "Ukur kesiapan seminar",
+          "en": "Assess seminar readiness"
+        }
+      ],
+      "deployment": [
+        {
+          "id": "Konfigurasi deployment dan rahasia lingkungan tidak dipublikasikan.",
+          "en": "Deployment configuration and environment secrets are not published."
+        },
+        {
+          "id": "Dokumentasi publik berfokus pada batas sistem dan cara verifikasi.",
+          "en": "Public documentation focuses on system boundaries and verification."
+        }
+      ]
+    },
+    "deepDives": [],
+    "evidence": [
+      {
+        "id": "skripsiops-ai-private-source",
+        "type": "repository",
+        "status": "documented",
+        "title": {
+          "id": "Source privat",
+          "en": "Private source"
+        },
+        "description": {
+          "id": "Repository tidak dipublikasikan. Ringkasan teknis telah disanitasi.",
+          "en": "The repository is not public. The technical summary is sanitized."
+        },
+        "safeToPublish": false
+      },
+      {
+        "id": "skripsiops-ai-screenshot",
+        "type": "screenshot",
+        "status": "planned",
+        "title": {
+          "id": "Bukti visual terkurasi",
+          "en": "Curated visual proof"
+        },
+        "description": {
+          "id": "Tambahkan screenshot yang telah diperiksa agar tidak mengandung data sensitif.",
+          "en": "Add a reviewed screenshot that contains no sensitive data."
+        },
+        "safeToPublish": true
+      }
+    ],
+    "limitations": [
+      {
+        "id": "Kualitas hasil tetap bergantung pada sumber dan data penelitian pengguna.",
+        "en": "Output quality still depends on the user’s research sources and data."
+      },
+      {
+        "id": "Detail source dan deployment privat belum dipublikasikan.",
+        "en": "Private source and deployment details are not published."
+      }
+    ],
+    "nextImprovements": [
+      {
+        "id": "Tambahkan bukti visual terkurasi dan evaluasi workflow pengguna.",
+        "en": "Add curated visual proof and user-workflow evaluation."
+      },
+      {
+        "id": "Perkuat observability dan export kesiapan seminar.",
+        "en": "Strengthen observability and seminar-readiness exports."
+      }
+    ],
+    "accent": "violet",
+    "screenshotStatus": "needed"
+  },
+  {
+    "slug": "aquasense-hardware-simulator",
+    "name": "AquaSense Hardware Simulator",
+    "featured": false,
+    "featuredRank": null,
+    "repository": null,
+    "visibility": "private",
+    "stage": "active",
+    "version": "2.3.0-rc5",
+    "developmentStatus": {
+      "id": "Release candidate",
+      "en": "Release candidate"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05",
+    "caseStudyDepth": "overview",
+    "contentReview": "needs-owner-review",
+    "category": {
+      "id": "Simulasi perangkat IoT",
+      "en": "IoT device simulation"
+    },
+    "summary": {
+      "id": "Simulator mandiri untuk menguji telemetri, command acknowledgement, device identity, dan integrasi MQTT sebelum commissioning hardware.",
+      "en": "A standalone simulator for testing telemetry, command acknowledgement, device identity, and MQTT integration before hardware commissioning."
+    },
+    "problem": {
+      "id": "Pengujian website IoT membutuhkan perangkat yang berperilaku seperti hardware nyata tanpa bergantung pada alat fisik setiap saat.",
+      "en": "Testing an IoT website requires device behavior close to real hardware without depending on physical equipment at all times."
+    },
+    "outcome": {
+      "id": "Release candidate menyediakan simulator edge dan Wokwi-oriented flow yang dipisahkan dari core application.",
+      "en": "The release candidate provides edge simulation and a Wokwi-oriented flow separated from the core application."
+    },
+    "stack": [
+      "Python",
+      "MicroPython",
+      "MQTT",
+      "Wokwi",
+      "Docker"
+    ],
+    "flow": [
+      {
+        "id": "Provision identity perangkat",
+        "en": "Provision device identity"
+      },
+      {
+        "id": "Publikasikan telemetri",
+        "en": "Publish telemetry"
+      },
+      {
+        "id": "Terima command",
+        "en": "Receive commands"
+      },
+      {
+        "id": "Kirim acknowledgement",
+        "en": "Send acknowledgements"
+      }
+    ],
+    "highlights": [
+      {
+        "id": "Simulator terpisah dari core",
+        "en": "Simulator separated from the core"
+      },
+      {
+        "id": "MQTT topic parity",
+        "en": "MQTT topic parity"
+      },
+      {
+        "id": "Command and acknowledgement testing",
+        "en": "Command and acknowledgement testing"
+      }
+    ],
+    "contribution": {
+      "role": {
+        "id": "Pengembang produk",
+        "en": "Product developer"
+      },
+      "teamContext": {
+        "id": "Ringkasan publik dibatasi pada area yang aman dipublikasikan.",
+        "en": "The public summary is limited to areas safe to publish."
+      },
+      "scope": {
+        "id": "Arsitektur, workflow utama, quality gate, dan kesiapan operasional.",
+        "en": "Architecture, core workflows, quality gates, and operational readiness."
+      },
+      "responsibilities": [
+        {
+          "id": "Menyusun alur utama dan kontrak data.",
+          "en": "Designed core workflows and data contracts."
+        },
+        {
+          "id": "Menjaga implementasi, pengujian, dan dokumentasi tetap selaras.",
+          "en": "Kept implementation, testing, and documentation aligned."
+        }
+      ],
+      "ownership": [
+        {
+          "id": "Studi kasus hanya memuat informasi yang telah disanitasi.",
+          "en": "The case study only includes sanitized information."
+        }
+      ]
+    },
+    "architecture": {
+      "summary": {
+        "id": "Simulator mandiri untuk menguji telemetri, command acknowledgement, device identity, dan integrasi MQTT sebelum commissioning hardware.",
+        "en": "A standalone simulator for testing telemetry, command acknowledgement, device identity, and MQTT integration before hardware commissioning."
+      },
+      "components": [
+        {
+          "name": "Python edge simulator",
+          "responsibility": {
+            "id": "Mensimulasikan state perangkat dan pertukaran MQTT.",
+            "en": "Simulates device state and MQTT exchanges."
+          }
+        },
+        {
+          "name": "Wokwi target",
+          "responsibility": {
+            "id": "Menyediakan jalur pengujian firmware tanpa hardware fisik.",
+            "en": "Provides a firmware test path without physical hardware."
+          }
+        },
+        {
+          "name": "MQTT contract",
+          "responsibility": {
+            "id": "Menjaga parity topic, payload, dan acknowledgement.",
+            "en": "Maintains topic, payload, and acknowledgement parity."
+          }
+        }
+      ],
+      "dataFlow": [
+        {
+          "id": "Provision identity perangkat",
+          "en": "Provision device identity"
+        },
+        {
+          "id": "Publikasikan telemetri",
+          "en": "Publish telemetry"
+        },
+        {
+          "id": "Terima command",
+          "en": "Receive commands"
+        },
+        {
+          "id": "Kirim acknowledgement",
+          "en": "Send acknowledgements"
+        }
+      ],
+      "deployment": [
+        {
+          "id": "Konfigurasi deployment dan rahasia lingkungan tidak dipublikasikan.",
+          "en": "Deployment configuration and environment secrets are not published."
+        },
+        {
+          "id": "Dokumentasi publik berfokus pada batas sistem dan cara verifikasi.",
+          "en": "Public documentation focuses on system boundaries and verification."
+        }
+      ]
+    },
+    "deepDives": [],
+    "evidence": [
+      {
+        "id": "aquasense-hardware-simulator-private-source",
+        "type": "repository",
+        "status": "documented",
+        "title": {
+          "id": "Source privat",
+          "en": "Private source"
+        },
+        "description": {
+          "id": "Repository tidak dipublikasikan. Ringkasan teknis telah disanitasi.",
+          "en": "The repository is not public. The technical summary is sanitized."
+        },
+        "safeToPublish": false
+      },
+      {
+        "id": "aquasense-hardware-simulator-screenshot",
+        "type": "screenshot",
+        "status": "planned",
+        "title": {
+          "id": "Bukti visual terkurasi",
+          "en": "Curated visual proof"
+        },
+        "description": {
+          "id": "Tambahkan screenshot yang telah diperiksa agar tidak mengandung data sensitif.",
+          "en": "Add a reviewed screenshot that contains no sensitive data."
+        },
+        "safeToPublish": true
+      }
+    ],
+    "limitations": [
+      {
+        "id": "Simulator tidak menggantikan pengujian relay, sensor, dan jaringan nyata.",
+        "en": "The simulator does not replace real relay, sensor, and network tests."
+      },
+      {
+        "id": "Konfigurasi broker dan credential tidak dipublikasikan.",
+        "en": "Broker configuration and credentials are not published."
+      }
+    ],
+    "nextImprovements": [
+      {
+        "id": "Tambahkan contract tests lintas simulator dan core.",
+        "en": "Add cross-system contract tests between simulator and core."
+      },
+      {
+        "id": "Dokumentasikan parity matrix terhadap hardware final.",
+        "en": "Document a parity matrix against final hardware."
+      }
+    ],
+    "accent": "cyan",
     "screenshotStatus": "needed"
   },
   {
@@ -3456,7 +3901,15 @@
       }
     ],
     "accent": "navy",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": "1.0.0",
+    "developmentStatus": {
+      "id": "Rilis stabil",
+      "en": "Stable release"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "content-strategy",
@@ -3665,7 +4118,15 @@
       }
     ],
     "accent": "cobalt",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Studi kasus publik",
+      "en": "Public case study"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "jti-intern-testing",
@@ -3883,7 +4344,15 @@
       }
     ],
     "accent": "slate",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Studi pengujian tervalidasi",
+      "en": "Validated testing study"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "e2e-magangin",
@@ -4096,7 +4565,15 @@
       }
     ],
     "accent": "teal",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Studi pengujian",
+      "en": "Testing study"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "machine-learning-lab-2025",
@@ -4302,7 +4779,15 @@
       }
     ],
     "accent": "steel",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Pembelajaran terapan",
+      "en": "Applied learning"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "mobile-programming-lab",
@@ -4502,7 +4987,15 @@
       }
     ],
     "accent": "slate",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Pembelajaran terapan",
+      "en": "Applied learning"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   },
   {
     "slug": "technorules",
@@ -4697,6 +5190,14 @@
       }
     ],
     "accent": "slate",
-    "screenshotStatus": "needed"
+    "screenshotStatus": "needed",
+    "version": null,
+    "developmentStatus": {
+      "id": "Pengembangan aktif",
+      "en": "Active development"
+    },
+    "currentPriority": false,
+    "currentRank": null,
+    "lastReviewedAt": "2026-08-05"
   }
 ]
