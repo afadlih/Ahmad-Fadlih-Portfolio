@@ -51,13 +51,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint": "^10",
+    "eslint-config-next": "16.3.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "description": "Bilingual Next.js portfolio final deployment candidate with a calm-blue design system, resilient project details, consistent code scrollers, visual QA guards, content-lock documentation, and release preflight checks.",
   "license": "UNLICENSED",
