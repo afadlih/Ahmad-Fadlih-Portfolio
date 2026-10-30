@@ -13,7 +13,19 @@
   "includeEntryExports": true,
   "ignoreExportsUsedInFile": true,
   "ignoreIssues": {
-    "src/app/**/{page,layout,route,error,loading,not-found,global-error,global-not-found,manifest,robots,sitemap,opengraph-image}.tsx": ["exports", "types"],
-    "src/app/**/{route,manifest,robots,sitemap}.ts": ["exports", "types"]
-  }
+    "src/app/**/{page,layout,route,error,loading,not-found,global-error,global-not-found,manifest,robots,sitemap,opengraph-image}.tsx": [
+      "exports",
+      "types"
+    ],
+    "src/app/**/{route,manifest,robots,sitemap}.ts": [
+      "exports",
+      "types"
+    ],
+    "src/lib/content.ts": [
+      "exports"
+    ]
+  },
+  "ignore": [
+    "src/components/ui/separator.tsx"
+  ]
 }
