@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Project, Language } from "@/types/content";
-import { localePath, localize, ui } from "@/i18n/config";
+import { localePath, ui } from "@/i18n/config";
 import { featuredProjects, projects } from "@/lib/content";
 import { Container } from "@/components/portfolio/Container";
 import { SectionHeader } from "@/components/portfolio/SectionHeader";
