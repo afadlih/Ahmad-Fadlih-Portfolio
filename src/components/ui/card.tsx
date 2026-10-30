@@ -13,10 +13,6 @@ export function CardTitle({ className, ...props }: HTMLAttributes<HTMLHeadingEle
   return <h3 className={cn("ui-card__title", className)} {...props} />;
 }
 
-export function CardDescription({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
-  return <p className={cn("ui-card__description", className)} {...props} />;
-}
-
 export function CardContent({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("ui-card__content", className)} {...props} />;
 }
