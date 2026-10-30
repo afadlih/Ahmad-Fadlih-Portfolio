@@ -66,7 +66,7 @@ jobs:
           fetch-depth: 0
 
       - name: Audit changed code with Fallow
-        uses: fallow-rs/fallow@v2
+        uses: fallow-rs/fallow@v3
         with:
           command: audit
           config: .fallowrc.jsonc
