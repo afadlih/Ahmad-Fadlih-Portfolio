@@ -9,7 +9,7 @@ import { buttonClassName } from "@/components/ui/button";
 function heroCopy(language: Language) {
   return language === "id"
     ? {
-        eyebrow: "Fullstack Developer · Web, AI, IoT, dan QA",
+        eyebrow: "Fullstack Developer",
         resume: "Lihat CV",
         systemMap: "Peta sistem",
         current: "Sedang dikerjakan",
@@ -17,7 +17,7 @@ function heroCopy(language: Language) {
         focusLabel: "Fokus kemampuan",
       }
     : {
-        eyebrow: "Fullstack Developer · Web, AI, IoT, and QA",
+        eyebrow: "Fullstack Developer",
         resume: "View resume",
         systemMap: "System map",
         current: "Currently building",
@@ -34,7 +34,7 @@ export function HomeHero({ language }: { language: Language }) {
     <section className="portfolio-hero">
       <Container className="portfolio-hero__grid">
         <div className="portfolio-hero__copy">
-          <p className="section-eyebrow">{copy.eyebrow}</p>
+          <p className="section-eyebrow">{profile.shortName} · {copy.eyebrow}</p>
           <h1>{localize(profile.heroTitle, language)}</h1>
           <p className="portfolio-hero__lead">{localize(profile.heroSummary, language)}</p>
 
