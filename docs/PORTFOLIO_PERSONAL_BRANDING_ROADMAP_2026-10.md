@@ -1,4 +1,4 @@
-# Portfolio & Personal Branding Roadmap — Oktober 2026
+# Portfolio & Personal Branding Roadmap - Oktober 2026
 
 Status: audit awal berbasis branch `main` pada commit `ce05015`, 30 Oktober 2026.
 Dokumen ini adalah rencana kerja; bukan bukti bahwa konten sudah disahkan atau situs telah lolos audit browser produksi.
@@ -19,10 +19,10 @@ Jangan mengklaim dampak, angka hasil, peran utama, sertifikasi, atau deployment 
 - `src/content/credentials.json`: sertifikasi BNSP berstatus published dengan `issuedAt: pending`, sehingga tampilan publik memerlukan peninjauan.
 - `src/content/experiences.json`: belum memuat riwayat magang terkini yang dapat diverifikasi.
 - Metadata repository GitHub tidak memuat homepage/domain publik; konfigurasi URL situs harus dikonfirmasi di lingkungan deployment.
-- Pada riwayat Actions 5 Agustus–12 Oktober, lint, Knip, maintenance, dan live-check menunjukkan kegagalan; lihat log Actions. Perbaikan minimal lint/Knip/maintenance berada dalam PR ini; keberhasilan CI baru boleh dinyatakan setelah run baru selesai.
+- Pada riwayat Actions 5 Agustus-12 Oktober, lint, Knip, maintenance, dan live-check menunjukkan kegagalan; lihat log Actions. Perbaikan minimal lint/Knip/maintenance berada dalam PR ini; keberhasilan CI baru boleh dinyatakan setelah run baru selesai.
 - `Live Portfolio Check` berhenti karena `PORTFOLIO_PUBLIC_URL` kosong. Jangan menutupi masalah dengan bypass ketika situs sudah diklaim live.
 
-## P0 — Engineering gate dan release
+## P0 - Engineering gate dan release
 
 - [ ] Pull request ini lolos `npm run verify` dan workflow static analysis.
 - [ ] Cek hasil pemeriksaan maintainability; perbaiki kegagalan lanjutan berdasarkan log, bukan mematikan seluruh quality gate.
@@ -30,7 +30,7 @@ Jangan mengklaim dampak, angka hasil, peran utama, sertifikasi, atau deployment 
 - [ ] Audit CV publik: PDF harus terbaru; hindari tautan DOCX editable yang tidak diperlukan di halaman publik.
 - [ ] Uji desktop, tablet, mobile, keyboard-only, screen reader baseline, light/dark mode, ID/EN, download CV, dan external links.
 
-## P1 — Identitas profesional
+## P1 - Identitas profesional
 
 - [ ] Periksa nama dan jabatan yang konsisten di hero, LinkedIn, CV, footer, dan metadata.
 - [ ] Perbarui riwayat profesional yang memang dapat dibuktikan; tulis nama perusahaan, status magang, periode, peran, kontribusi, dan batas akses data perusahaan secara tepat.
@@ -38,7 +38,7 @@ Jangan mengklaim dampak, angka hasil, peran utama, sertifikasi, atau deployment 
 - [ ] Bedakan kontribusi individu, kontribusi tim, prototype, pilot, dan production.
 - [ ] Sertifikasi dengan data kurang lengkap jangan ditampilkan sebagai sudah terverifikasi.
 
-## P2 — Bukti kerja (prioritas visual dan case study)
+## P2 - Bukti kerja (prioritas visual dan case study)
 
 Untuk tiga proyek unggulan dan OrthoBreath, kurasi artefak asli yang aman:
 1. Screenshot antarmuka nyata tanpa data pengguna, jaringan internal, secret, atau perusahaan.
@@ -47,9 +47,9 @@ Untuk tiga proyek unggulan dan OrthoBreath, kurasi artefak asli yang aman:
 4. Link repository/demo yang benar-benar dapat dibuka publik, atau penjelasan mengapa kode privat.
 
 Tidak boleh mengganti bukti dengan screenshot sintetis, angka rekaan, atau testimoni fiktif.
-Masukkan minimal 2–3 artefak yang benar-benar siap untuk setiap proyek unggulan; proyek lain cukup diringkas.
+Masukkan minimal 2-3 artefak yang benar-benar siap untuk setiap proyek unggulan; proyek lain cukup diringkas.
 
-## P3 — Discoverability dan konversi
+## P3 - Discoverability dan konversi
 
 - [ ] Buat CTA jelas: lihat proyek terpilih, unduh CV final, hubungi via email/LinkedIn.
 - [ ] Sinkronkan urutan tiga karya unggulan dengan target peran, bukan senioritas atau jumlah repo.
