@@ -5,28 +5,35 @@ on:
   schedule:
     - cron: "0 1 * * 1"
 
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-maintenance
+  cancel-in-progress: true
+
 jobs:
   maintenance-check:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
+          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund
 
-      - name: Run maintenance cycle
-        run: npm run maintenance:cycle
+      - name: Verify portfolio
+        run: npm run verify
 
-      - name: Upload maintenance report
-        uses: actions/upload-artifact@v4
-        with:
-          name: maintenance-status
-          path: docs/MAINTENANCE_STATUS.md
+      - name: Maintenance summary
+        if: success()
+        run: echo "Portfolio verification passed (lint, typecheck, QA, build)." >> "$GITHUB_STEP_SUMMARY"
