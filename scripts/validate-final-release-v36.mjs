@@ -31,9 +31,9 @@ if (!packageJson.scripts?.["validate:visual-qa"]) errors.push("validate:visual-q
 if (!packageJson.scripts?.["validate:final-release"]) errors.push("validate:final-release script is missing");
 
 const globals = read("src/app/globals.css");
-for (const module of ["tokens", "layout", "home", "pages", "polish", "responsive"]) {
-  if (!globals.includes(`../styles/v36/${module}.css`)) {
-    errors.push(`globals.css missing v36 ${module} module`);
+for (const styleModule of ["tokens", "layout", "home", "pages", "polish", "responsive"]) {
+  if (!globals.includes(`../styles/v36/${styleModule}.css`)) {
+    errors.push(`globals.css missing v36 ${styleModule} module`);
   }
 }
 if (globals.includes("../styles/v29/")) errors.push("globals.css still imports v29 styles");

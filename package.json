@@ -56,7 +56,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "tailwindcss": "^4",
     "typescript": "^5"
   },
   "description": "Bilingual Next.js portfolio final deployment candidate with a calm-blue design system, resilient project details, consistent code scrollers, visual QA guards, content-lock documentation, and release preflight checks.",

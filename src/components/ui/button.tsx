@@ -1,4 +1,3 @@
-import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant =
@@ -38,23 +37,4 @@ export function buttonClassName({
   className?: string;
 } = {}) {
   return cn(baseClass, variantClasses[variant], sizeClasses[size], className);
-}
-
-export function Button({
-  className,
-  variant = "default",
-  size = "default",
-  type = "button",
-  ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-}) {
-  return (
-    <button
-      type={type}
-      className={buttonClassName({ variant, size, className })}
-      {...props}
-    />
-  );
 }

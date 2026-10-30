@@ -7,20 +7,6 @@ import type {
 } from "@/types/content";
 import { ui } from "@/i18n/config";
 
-const projectAccentMap: Record<string, string> = {
-  cobalt: "#315f9f",
-  teal: "#4f76a4",
-  slate: "#526a86",
-  navy: "#24466f",
-  steel: "#5a7fa9",
-  sky: "#7b9cc2",
-  indigo: "#466da1",
-};
-
-export function projectAccentHex(accent: string) {
-  return projectAccentMap[accent] ?? projectAccentMap.cobalt;
-}
-
 export function stageLabel(language: Language, stage: ProjectStage) {
   return ui[language].featured[stage];
 }
